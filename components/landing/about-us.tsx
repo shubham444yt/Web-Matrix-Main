@@ -176,9 +176,7 @@ export function AboutUs() {
           transition: opacity 0.3s ease;
           z-index: -1;
         }
-        .glow-border:hover::before {
-          opacity: 1;
-        }
+       
         .text-gradient {
           background: linear-gradient(135deg, #a855f7, #ec4899, #06b6d4);
           background-size: 200% 200%;

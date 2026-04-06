@@ -5,64 +5,56 @@ import { Twitter, Linkedin, Github, Mail, Sparkles, Users, Heart, ArrowRight, Br
 
 const teamMembers = [
   {
-    name: "Alex Chen",
-    role: "CEO & Founder",
-    bio: "Visionary leader with 10+ years in tech innovation",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    gradient: "from-purple-500 to-pink-500",
-    experience: "12+ years",
-    projects: "50+",
-    location: "San Francisco",
-  },
-  {
-    name: "Sarah Johnson",
-    role: "Lead Designer",
-    bio: "Creative mastermind behind our stunning UI/UX",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
+    name: "Shubham Prajapati",
+    role: "Founder & CEO",
+    bio: "The creative mastermind behind our WebMatrix",
+    image: "/images/monu.png",
     gradient: "from-pink-500 to-rose-500",
-    experience: "8+ years",
-    projects: "45+",
-    location: "New York",
+    experience: "3+ years",
+    projects: "10+",
+    location: "Mumbai",
+    linkedin: "https://www.linkedin.com/in/shubham-prajapati31/",
+    github: "https://github.com/Shubham-Prajapati31",
+    mail: "mailto:webmatrixcodes@gmail.com"
   },
   {
-    name: "Michael Park",
-    role: "Tech Lead",
-    bio: "Full-stack wizard building scalable solutions",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    name: "Shubham Thakare",
+    role: "Co-Founder & Software Engineer",
+    bio: "The tech genius driving powerful and scalable solutions",
+    image: "/images/sk.jpeg",
     gradient: "from-cyan-500 to-blue-500",
-    experience: "10+ years",
-    projects: "60+",
-    location: "Seattle",
+    experience: "3+ years",
+    projects: "10+",
+    location: "Mumbai",
+    linkedin: "https://www.linkedin.com/in/shubham-thakare-3044a0349",
+    github: "https://github.com/shubham444yt",
+    mail: "mailto:skmusixcreator@gmail.com"
   },
   {
-    name: "Emma Wilson",
-    role: "Project Manager",
-    bio: "Ensuring excellence in every project delivery",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+    name: "Anand Yadav",
+    role: "Python Developer & UI/UX Designer",
+    bio: "The creative mind blending design with flawless functionality",
+    image: "/images/anand.jpeg",
     gradient: "from-orange-500 to-amber-500",
-    experience: "9+ years",
-    projects: "35+",
-    location: "London",
+    experience: "3+ years",
+    projects: "10+",
+    location: "Mumbai",
+    linkedin: "https://www.linkedin.com/in/anand-yadav-0709432a8/",
+    github: "https://github.com/ananddyadav270",
+    mail: "mailto:ananddyadav270@gmail.com"
   },
   {
-    name: "David Kim",
-    role: "IoT Specialist",
-    bio: "Connecting the physical and digital worlds",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
+    name: "Vedant Gupta",
+    role: "Full Stack Software Developer",
+    bio: "The full-stack innovator turning ideas into reality",
+    image: "/images/vedant.png",
     gradient: "from-green-500 to-emerald-500",
-    experience: "7+ years",
-    projects: "30+",
-    location: "Austin",
-  },
-  {
-    name: "Lisa Zhang",
-    role: "AI Engineer",
-    bio: "Building intelligent systems for tomorrow",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face",
-    gradient: "from-violet-500 to-purple-500",
-    experience: "6+ years",
-    projects: "40+",
-    location: "Toronto",
+    experience: "3+ years",
+    projects: "10+",
+    location: "UP",
+    linkedin: "https://www.linkedin.com/in/vedant-gupta-764178366/",
+    github: "https://github.com/vedantgupta",
+    mail: "mailto:vedantg546@gmail.com"
   },
 ]
 
@@ -112,11 +104,11 @@ export function Teams() {
     return () => clearInterval(interval)
   }, [isVisible])
 
-  const socialLinks = [
-    { icon: Twitter, color: "hover:text-[#1DA1F2]", link: "#" },
-    { icon: Linkedin, color: "hover:text-[#0077B5]", link: "#" },
-    { icon: Github, color: "hover:text-[#333]", link: "#" },
-    { icon: Mail, color: "hover:text-purple-400", link: "#" },
+  // Social icons mapping
+  const getSocialLinks = (member: any) => [
+    { icon: Linkedin, color: "hover:text-[#0077B5]", link: member.linkedin },
+    { icon: Github, color: "hover:text-[#333]", link: member.github },
+    { icon: Mail, color: "hover:text-purple-400", link: member.mail },
   ]
 
   return (
@@ -293,7 +285,7 @@ export function Teams() {
         </div>
 
         {/* Team Grid with animated cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, i) => (
             <div 
               key={i}
@@ -369,12 +361,14 @@ export function Teams() {
 
                 {/* Social Links with animations */}
                 <div className="flex items-center justify-center gap-3 mt-4">
-                  {socialLinks.map((social, j) => (
+                  {getSocialLinks(member).map((social, j) => (
                     <a
                       key={j}
                       href={social.link}
                       className={`w-10 h-10 rounded-xl glass-card flex items-center justify-center text-gray-400 transition-all duration-300 social-icon ${social.color}`}
                       style={{ animationDelay: `${j * 0.05}s` }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <social.icon className="w-4 h-4" />
                     </a>
