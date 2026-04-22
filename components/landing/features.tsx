@@ -16,7 +16,7 @@ export function Features() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01, rootMargin: '100px' }
     )
 
     if (sectionRef.current) {

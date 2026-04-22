@@ -21,7 +21,7 @@ export function Contact() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01, rootMargin: '100px' }
     )
 
     if (sectionRef.current) {
@@ -38,7 +38,7 @@ export function Contact() {
   }
 
   return (
-    <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-4 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-pink-600/5 rounded-full blur-3xl" />
@@ -70,19 +70,19 @@ export function Contact() {
                   { 
                     icon: Mail, 
                     label: "Email Us", 
-                    value: "hello@webmatrix.dev",
+                    value: "webmatrixcodes@gmail.com",
                     gradient: "from-purple-500 to-violet-500"
                   },
                   { 
                     icon: Phone, 
                     label: "Call Us", 
-                    value: "+1 (555) 123-4567",
+                    value: "+91-73043 98854 / +91-92246 17090",
                     gradient: "from-pink-500 to-rose-500"
                   },
                   { 
                     icon: MapPin, 
                     label: "Visit Us", 
-                    value: "123 Innovation Street, Tech City",
+                    value: "Wagle Estate Thane (W), Maharashtra 400604",
                     gradient: "from-cyan-500 to-blue-500"
                   },
                 ].map((item, i) => (
@@ -102,9 +102,7 @@ export function Contact() {
               <div className="mt-12 pt-8 border-t border-white/10">
                 <h4 className="text-white font-semibold mb-4">Working Hours</h4>
                 <div className="space-y-2 text-gray-400">
-                  <p>Monday - Friday: <span className="text-white">9:00 AM - 6:00 PM</span></p>
-                  <p>Saturday: <span className="text-white">10:00 AM - 4:00 PM</span></p>
-                  <p>Sunday: <span className="text-white">Closed</span></p>
+                  <p>Monday - Sunday (Everyday) <br/>  <span className="text-white"> 24/7 Support</span></p>
                 </div>
               </div>
 
@@ -134,7 +132,7 @@ export function Contact() {
                     type="text"
                     value={formState.name}
                     onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                    placeholder="John Doe"
+                    placeholder="Enter Your Name"
                     className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all outline-none"
                     required
                   />
@@ -147,7 +145,7 @@ export function Contact() {
                     type="email"
                     value={formState.email}
                     onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                    placeholder="john@example.com"
+                    placeholder="Enter Your Email"
                     className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all outline-none"
                     required
                   />

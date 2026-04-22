@@ -73,7 +73,7 @@ export function Teams() {
           generateParticles()
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01, rootMargin: '100px' }
     )
 
     if (sectionRef.current) {
@@ -112,7 +112,7 @@ export function Teams() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatParticle {
           0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
@@ -420,7 +420,7 @@ export function Teams() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-full px-10 py-4 font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 group"
               >
                 View Open Positions

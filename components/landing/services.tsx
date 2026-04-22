@@ -93,7 +93,7 @@ export function Services() {
           generateParticles()
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01, rootMargin: '100px' }
     )
 
     if (sectionRef.current) {
@@ -132,7 +132,7 @@ export function Services() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatParticle {
           0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }

@@ -28,7 +28,7 @@ export function Navbar() {
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 px-4 py-4 transition-all duration-500 ${scrolled ? 'py-2' : 'py-4'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[100] px-4 py-4 transition-all duration-500 ${scrolled || isOpen ? 'bg-[#050510]/95 backdrop-blur-xl py-2 shadow-2xl' : 'py-4'}`}>
       <div className="max-w-7xl mx-auto">
         <div className={`glass-card rounded-full px-6 py-3 flex items-center justify-between transition-all duration-500 ${scrolled ? 'glow-border' : ''}`}>
           {/* Logo */}
@@ -69,37 +69,49 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-white p-2 rounded-full glass-card hover:bg-white/10 transition-all"
+            className="lg:hidden text-white p-2 rounded-full glass-card hover:bg-white/10 transition-all z-50"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
-        <div className={`lg:hidden mt-4 glass-card rounded-2xl overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="p-6 space-y-2">
-            {navItems.map((item, index) => (
-              <Link 
-                key={item.name}
-                href={item.href} 
-                className={`block py-3 px-4 rounded-xl transition-all duration-300 ${
-                  pathname === item.href 
-                    ? 'text-white bg-white/10' 
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="pt-4">
-              <Link href="/contact" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-full font-semibold">
-                  Get Started
-                </Button>
-              </Link>
+        <div 
+          className={`lg:hidden fixed left-0 right-0 top-[76px] mx-4 transition-all duration-500 ease-in-out ${
+            isOpen 
+              ? 'opacity-100 translate-y-0 pointer-events-auto scale-100 visible' 
+              : 'opacity-0 -translate-y-4 pointer-events-none scale-95 invisible'
+          }`}
+        >
+          <div className="glass-card-strong rounded-3xl p-6 shadow-2xl border-purple-500/30 overflow-hidden">
+            <div className="space-y-2">
+              {navItems.map((item, index) => (
+                <Link 
+                  key={item.name}
+                  href={item.href} 
+                  className={`block py-4 px-5 rounded-2xl transition-all duration-300 ${
+                    pathname === item.href 
+                      ? 'text-white bg-white/15 shadow-inner' 
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  }`}
+                  style={{ transitionDelay: `${index * 50}ms` }}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-medium">{item.name}</span>
+                    <div className={`w-1.5 h-1.5 rounded-full bg-purple-500 transition-opacity duration-300 ${pathname === item.href ? 'opacity-100' : 'opacity-0'}`} />
+                  </div>
+                </Link>
+              ))}
+              <div className="pt-6">
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full py-7 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-2xl font-bold text-lg shadow-xl shadow-purple-500/20 hover:scale-[1.02] active:scale-95 transition-all">
+                    Get Started Now
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ export function AboutUs() {
           startStatsAnimation()
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.01, rootMargin: '100px' }
     )
 
     if (sectionRef.current) {
@@ -48,7 +48,7 @@ export function AboutUs() {
   const startStatsAnimation = () => {
     const duration = 2000
     const startTime = Date.now()
-    const targetStats = { founded: 2019, team: 50, countries: 15 }
+    const targetStats = { founded: 2023, team: 5, countries: 2 }
     
     const animate = () => {
       const elapsed = Date.now() - startTime
@@ -94,7 +94,7 @@ export function AboutUs() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatParticle {
           0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }

@@ -24,7 +24,7 @@ export function LogoCloud() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.01, rootMargin: '100px' }
     )
 
     if (sectionRef.current) {

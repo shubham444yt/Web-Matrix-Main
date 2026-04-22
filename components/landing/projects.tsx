@@ -1,74 +1,108 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ExternalLink, Star, Users, Github, ArrowRight, Sparkles, Zap, Eye, Heart, TrendingUp, Award, Code, Layout, Smartphone, Database, Cloud, Shield } from "lucide-react"
+import { ExternalLink, Star, Users, ShoppingCart, ArrowRight, Sparkles, Zap, Eye, Heart, TrendingUp, Award, Code, Layout, Smartphone, Database, Cloud, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Modular Kitchen Website",
     category: "Web Development",
-    description: "A full-featured online store with advanced filtering, real-time inventory, and seamless checkout experience.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
-    tags: ["Next.js", "Stripe", "Tailwind"],
+    description: "Modular Kitchen Website is a website that can helps to design modular kitchen.",
+    image: "/images/jas.png",
+    tags: ["Next.js", "Tailwind", "JavaScript"],
+    gradient: "from-orange-500 to-amber-500",
+    stats: { devices: "5K+", savings: "30%" },
+    liveUrl: "https://jas-modulars.vercel.app/",
+    githubUrl: "#",
+  },
+  {
+    title: "Modern Blog Website",
+    category: "Web Development",
+    description: "A Modern Blog Website is a website that can helps to read and write blogs.",
+    image: "/images/blog.png",
+    tags: ["Next.js", "Tailwind", "JavaScript"],
     gradient: "from-purple-500 to-pink-500",
     stats: { sales: "50K+", rating: 4.9 },
-    liveUrl: "#",
+    liveUrl: "https://modern-blog-website-eight.vercel.app/",
     githubUrl: "#",
   },
+  
   {
-    title: "Healthcare Dashboard",
-    category: "UI/UX Design",
-    description: "Intuitive patient management system with real-time monitoring and analytics visualization.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-    tags: ["Figma", "React", "D3.js"],
-    gradient: "from-cyan-500 to-blue-500",
-    stats: { patients: "10K+", uptime: "99.9%" },
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    title: "Smart Home IoT",
-    category: "IoT Project",
-    description: "Connected home automation system with voice control and energy optimization algorithms.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop",
-    tags: ["Arduino", "MQTT", "Node.js"],
-    gradient: "from-green-500 to-emerald-500",
-    stats: { devices: "5K+", savings: "30%" },
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    title: "AI Content Generator",
+    title: "AI Sign Recognizer",
     category: "Software Development",
-    description: "Intelligent content creation tool powered by machine learning for marketing teams.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop",
-    tags: ["Python", "OpenAI", "FastAPI"],
-    gradient: "from-orange-500 to-amber-500",
+    description: "AI Sign Recognizer is a website that can helps to recognize sign language.",
+    image: "/images/ai.png",
+    tags: ["Python", "TensorFlow", "FastAPI"],
+    gradient: "from-green-500 to-emerald-500",
     stats: { generated: "100K+", accuracy: "95%" },
     liveUrl: "#",
     githubUrl: "#",
   },
   {
-    title: "Fitness Tracking App",
-    category: "Mobile App",
-    description: "Comprehensive health and fitness app with workout plans, nutrition tracking, and social features.",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=500&fit=crop",
-    tags: ["React Native", "Firebase", "HealthKit"],
-    gradient: "from-pink-500 to-rose-500",
-    stats: { downloads: "1M+", active: "100K+" },
-    liveUrl: "#",
+    title: "Car Rental Website",
+    category: "Web Development",
+    description: "Car Rental Website is a website that can helps to rent a car.",
+    image: "/images/car.png",
+    tags: ["Figma", "React", "JavaScript"],
+    gradient: "from-violet-500 to-purple-500",
+    stats: { patients: "10K+", uptime: "99.9%" },
+    liveUrl: "https://car-booking-web.netlify.app/",
+    githubUrl: "#",
+  },
+   {
+    title: "Snooker Table Booking",
+    category: "Enterprise Software",
+    description: "Snooker Table Booking is a website that can helps to book a snooker table.",
+    image: "/images/snooker.png",
+    tags: ["Next.js", "Tailwind", "MongoDB"],
+    gradient: "from-green-500 to-emerald-500",
+    stats: { shipments: "500K+", efficiency: "+40%" },
+    liveUrl: "https://snooker-table-web.vercel.app/",
     githubUrl: "#",
   },
   {
-    title: "Supply Chain System",
-    category: "Enterprise Software",
-    description: "End-to-end logistics management with real-time tracking and predictive analytics.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=500&fit=crop",
-    tags: ["Java", "Kafka", "PostgreSQL"],
+    title: "Smart AI Tools Hub",
+    category: "Mobile App",
+    description: "Smart AI Tools Hub is a website that can helps to use AI tools.",
+    image: "/images/tools.png",
+    tags: ["Next.js", "Tailwind", "JavaScript"],
+    gradient: "from-pink-500 to-rose-500",
+    stats: { downloads: "1M+", active: "100K+" },
+    liveUrl: "https://smartai-tools-hub.netlify.app/",
+    githubUrl: "#",
+  },
+ {
+    title: "AI Study Portal",
+    category: "Web Development",
+    description: "AI Study Portal is a website that can helps to study AI.",
+    image: "/images/monuS5.png",
+    tags: ["Figma", "React", "JavaScript"],
     gradient: "from-violet-500 to-purple-500",
-    stats: { shipments: "500K+", efficiency: "+40%" },
+    stats: { patients: "10K+", uptime: "99.9%" },
+    liveUrl: "https://ai-study-platform-ty.vercel.app/",
+    githubUrl: "#",
+  },
+   {
+    title: "E-Commerce Website",
+    category: "Web Development",
+    description: "E-Commerce Website is a website that can helps to buy and sell products.",
+    image: "/images/e-comm.png",
+    tags: ["Next.js", "Tailwind", "JavaScript"],
+    gradient: "from-purple-500 to-pink-500",
+    stats: { sales: "50K+", rating: 4.9 },
+    liveUrl: "https://urban-pick-webmatrix.vercel.app/",
+    githubUrl: "#",
+  },
+  {
+    title: "Smart Glasses",
+    category: "IoT Project",
+    description: "Smart Glasses is a glasses that can helps blind peopls.",
+    image: "/images/IOT.png",
+    tags: ["Arduino", "MQTT", "Node.js"],
+    gradient: "from-green-500 to-emerald-500",
+    stats: { devices: "5K+", savings: "30%" },
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -81,7 +115,7 @@ export function Projects() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const [particlePositions, setParticlePositions] = useState<Array<{ x: number; y: number; delay: number }>>([])
 
-  const filters = ["All", "Web Development", "UI/UX Design", "IoT Project", "Software Development", "Mobile App", "Enterprise Software"]
+  const filters = ["All", "Web Development", "IoT Project", "Software Development", "Mobile App", "Enterprise Software"]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -91,7 +125,7 @@ export function Projects() {
           generateParticles()
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01, rootMargin: '100px' }
     )
 
     if (sectionRef.current) {
@@ -129,7 +163,7 @@ export function Projects() {
   }
 
   return (
-    <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
+    <section ref={sectionRef} className="py-8 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatParticle {
           0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
@@ -331,15 +365,21 @@ export function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4">
                   <a 
                     href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110 overlay-buttons"
+                    title="Live Demo"
                   >
                     <ExternalLink className="w-5 h-5" />
                   </a>
                   <a 
-                    href={project.githubUrl}
-                    className="w-12 h-12 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110 overlay-buttons"
+                    href={`https://wa.me/919224617090?text=${encodeURIComponent(`I Really like your Project "${project.title}" and I want to buy this project.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 h-12 rounded-full bg-green-500/90 backdrop-blur flex items-center justify-center text-white hover:bg-green-500 transition-all duration-300 hover:scale-105 overlay-buttons gap-2 shadow-xl border border-white/10"
                   >
-                    <Github className="w-5 h-5" />
+                    <ShoppingCart className="w-5 h-5" />
+                    {/* <span className="text-sm font-bold">Buy Now</span> */}
                   </a>
                 </div>
                 
@@ -422,7 +462,7 @@ export function Projects() {
 
         {/* View All CTA with animations */}
         <div className={`text-center mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <Link href="#contact">
+          <Link href="/contact">
             <Button className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-full px-10 py-6 text-lg font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 group">
               Start Your Project
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
