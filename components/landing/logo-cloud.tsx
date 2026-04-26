@@ -3,14 +3,12 @@
 import { useEffect, useRef, useState } from "react"
 
 const partners = [
-  { name: "TechCorp" },
-  { name: "InnovateLab" },
-  { name: "CloudSync" },
-  { name: "DataPro" },
-  { name: "SmartHub" },
-  { name: "NextGen" },
-  { name: "ByteWise" },
-  { name: "DigiFlow" },
+  { name: "RohTech" },
+  { name: "Xrisu_4.4" },
+  { name: "GoogleCloud" },
+  { name: "Nexcore Alliance" },
+  { name: "WebMatrix" },
+  { name: "Google" },
 ]
 
 export function LogoCloud() {

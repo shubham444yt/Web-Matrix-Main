@@ -67,10 +67,10 @@ export function Sources() {
   }, [isVisible])
 
   const sources = [
-    { title: "Product-Led Growth Report 2024", type: "Research Paper", source: "Gartner", date: "2 days ago", relevance: 98 },
-    { title: "The Future of AI in SaaS", type: "Industry Report", source: "McKinsey", date: "1 week ago", relevance: 95 },
-    { title: "User Behavior Analytics", type: "Case Study", source: "Harvard BR", date: "3 days ago", relevance: 92 },
-    { title: "Market Trends Q1 2024", type: "Market Analysis", source: "Forrester", date: "5 days ago", relevance: 89 },
+    { title: "E-commerce Solutions", type: "Web Dev", source: "Next.js/React", date: "Latest", relevance: 100 },
+    { title: "Custom ERP Software", type: "Software", source: "Node.js/Python", date: "Stable", relevance: 98 },
+    { title: "IoT Smart Monitoring", type: "IoT", source: "Arduino/ESP32", date: "Advanced", relevance: 95 },
+    { title: "Student Project Hub", type: "Education", source: "All Stacks", date: "24/7", relevance: 100 },
   ]
 
   return (
@@ -186,18 +186,18 @@ export function Sources() {
             {/* Animated badge */}
             <div className="inline-flex items-center gap-2 glass-card rounded-full px-4 py-1.5 mb-6 border-animate">
               <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
-              <span className="text-purple-400 text-sm font-medium">AI-Powered Discovery</span>
+              <span className="text-purple-400 text-sm font-medium">Digital Excellence</span>
               <Zap className="w-3 h-3 text-yellow-500" />
             </div>
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
-              Get the best
+              Innovative
             </h2>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
-              <span className="text-gradient">sources for your</span>
+              <span className="text-gradient">Solutions for Your</span>
             </h2>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
-              reports
+              Digital Growth
             </h2>
             
             {/* Animated stats row */}
@@ -207,8 +207,8 @@ export function Sources() {
                   <CheckCircle2 className="w-4 h-4 text-green-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">10k+</div>
-                  <div className="text-xs text-gray-400">Sources indexed</div>
+                  <div className="text-2xl font-bold text-white">500+</div>
+                  <div className="text-xs text-gray-400">Projects delivered</div>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -216,8 +216,8 @@ export function Sources() {
                   <TrendingUp className="w-4 h-4 text-purple-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">99%</div>
-                  <div className="text-xs text-gray-400">Accuracy rate</div>
+                  <div className="text-2xl font-bold text-white">98%</div>
+                  <div className="text-xs text-gray-400">Client Satisfaction</div>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -225,14 +225,14 @@ export function Sources() {
                   <Clock className="w-4 h-4 text-cyan-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">&lt;2s</div>
-                  <div className="text-xs text-gray-400">Response time</div>
+                  <div className="text-2xl font-bold text-white">24/7</div>
+                  <div className="text-xs text-gray-400">Expert Support</div>
                 </div>
               </div>
             </div>
             
             <p className="text-gray-400 text-lg mb-10 leading-relaxed max-w-lg">
-              An LLM agent that understands what your research is about and finds you the most relevant content.
+              Empowering startups, businesses, and students with custom web apps, professional UI/UX, and innovative IoT solutions.
             </p>
             
             <Link href="/contact">
@@ -248,18 +248,22 @@ export function Sources() {
             <div className="relative">
               {/* Animated floating badges */}
               <div className="absolute -top-4 -left-4 z-10 floating-source" style={{ animationDelay: '0.3s' }}>
+                <Link href="/services">
                 <div className="glass-card rounded-full px-4 py-2 flex items-center gap-2 shadow-lg hover:scale-105 transition-transform cursor-pointer">
                   <Database className="w-4 h-4 text-purple-400" />
-                  <span className="text-white text-sm font-medium">500+ sources</span>
+                  <span className="text-white text-sm font-medium">50+ Tech Stacks</span>
                 </div>
+                </Link>
               </div>
               
               <div className="absolute -top-4 right-4 z-10 floating-source" style={{ animationDelay: '0.6s' }}>
+                <Link href="/projects">
                 <div className="glass-card rounded-full px-4 py-2 flex items-center gap-2 shadow-lg hover:scale-105 transition-transform cursor-pointer">
                   <FileText className="w-4 h-4 text-purple-400" />
-                  <span className="text-white text-sm font-medium">Find similar content</span>
+                  <span className="text-white text-sm font-medium">View Portfolio</span>
                   <ExternalLink className="w-3 h-3 text-gray-400" />
                 </div>
+                </Link>
               </div>
 
               {/* Main Card */}
@@ -271,26 +275,26 @@ export function Sources() {
                     <span className="text-white">
                       {fetchingStatus === "fetching" ? (
                         <span className="flex items-center gap-1">
-                          Searching
+                          Drafting Project Plan
                           <span className="animate-pulse">.</span>
                           <span className="animate-pulse delay-100">.</span>
                           <span className="animate-pulse delay-200">.</span>
                         </span>
                       ) : (
-                        "Upload content or enter query..."
+                        "Describe your project idea..."
                       )}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Upload className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
-                    <span className="text-gray-400 text-sm">Upward fetch</span>
+                    <span className="text-gray-400 text-sm">Send Brief</span>
                   </div>
                 </div>
 
                 {/* Animated Progress Bar */}
                 <div className="mb-6">
                   <div className="flex justify-between text-xs text-gray-400 mb-1">
-                    <span>Analyzing content sources...</span>
+                    <span>Building your project roadmap...</span>
                     <span className="text-purple-400">{Math.round(progress)}%</span>
                   </div>
                   <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
@@ -304,7 +308,7 @@ export function Sources() {
                   {fetchingStatus === "complete" && (
                     <div className="text-xs text-green-400 mt-1 animate-pulse flex items-center gap-1">
                       <CheckCircle2 className="w-3 h-3" />
-                      Analysis complete! Found 24 relevant sources
+                      Roadmap Ready! Let's start building.
                     </div>
                   )}
                 </div>
@@ -312,9 +316,9 @@ export function Sources() {
                 {/* From the web with animated icon */}
                 <div className="flex items-center gap-2 mb-4">
                   <Globe className="w-4 h-4 text-gray-400 animate-spin-slow" style={{ animationDuration: '10s' }} />
-                  <span className="text-gray-400 text-sm">From the web</span>
+                  <span className="text-gray-400 text-sm">Our Expertise</span>
                   <span className="text-xs text-purple-400 ml-auto">
-                    {fetchingStatus === "complete" ? "Updated just now" : "Live feed"}
+                    {fetchingStatus === "complete" ? "Ready to launch" : "Live consultation"}
                   </span>
                 </div>
 
@@ -345,7 +349,7 @@ export function Sources() {
                       {hoveredCard === i && (
                         <div className="mt-2 text-[10px] text-purple-400 flex items-center gap-1 animate-pulse">
                           <LinkIcon className="w-2 h-2" />
-                          View source
+                          Explore service
                         </div>
                       )}
                     </div>
@@ -354,7 +358,7 @@ export function Sources() {
 
                 {/* Interactive Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {["Product led growth", "Market Research", "AI Analytics", "User Insights"].map((tag, i) => (
+                  {["Web Development", "UI/UX Design", "Software Dev", "IoT Projects"].map((tag, i) => (
                     <div 
                       key={i}
                       className="inline-flex items-center gap-2 glass-card rounded-full px-4 py-2 cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-purple-500/20"
@@ -372,7 +376,7 @@ export function Sources() {
                 {/* Live indicator */}
                 <div className="absolute bottom-3 right-3 flex items-center gap-1">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-[10px] text-gray-500">Live AI Agent</span>
+                  <span className="text-[10px] text-gray-500">Active Solution Partner</span>
                 </div>
               </div>
             </div>

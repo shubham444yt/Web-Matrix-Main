@@ -2,9 +2,15 @@ import { Navbar } from "@/components/landing/navbar"
 import { Services } from "@/components/landing/services"
 import { Footer } from "@/components/landing/footer"
 
-export const metadata = {
-  title: "Our Services - Web Matrix",
-  description: "Comprehensive digital solutions including web development, UI/UX design, software development, IoT projects, and more.",
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Our Services | Web Development & IT Solutions",
+  description: "Explore our premium digital services including custom web development, UI/UX design, software development company solutions, and IoT projects.",
+  keywords: ["web development services", "UI/UX design", "software development company", "IoT solutions", "student projects"],
+  alternates: {
+    canonical: "/services",
+  },
 }
 
 export default function ServicesPage() {

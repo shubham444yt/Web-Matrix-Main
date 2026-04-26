@@ -2,9 +2,15 @@ import { Navbar } from "@/components/landing/navbar"
 import { Contact } from "@/components/landing/contact"
 import { Footer } from "@/components/landing/footer"
 
-export const metadata = {
-  title: "Contact Us - Web Matrix",
-  description: "Get in touch with Web Matrix. We are here to help bring your digital vision to life.",
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Contact Web Matrix | Get in Touch for Tech Solutions",
+  description: "Get in touch with Web Matrix. We are here to help bring your digital vision to life with custom software, web development, and IoT solutions.",
+  keywords: ["contact web matrix", "hire developers", "tech agency contact", "software consultation", "web development inquiry"],
+  alternates: {
+    canonical: "/contact",
+  },
 }
 
 export default function ContactPage() {

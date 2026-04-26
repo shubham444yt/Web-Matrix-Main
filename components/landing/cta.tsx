@@ -41,8 +41,8 @@ export function CTA() {
           <span className="text-sm text-gray-300">Start building today</span>
         </div>
         
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-          Ready to Build Your Future
+        <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+          Ready to Build Your Innovative Idea
           <br />
           <span className="text-gradient">with Web Matrix?</span>
         </h2>

@@ -48,7 +48,7 @@ export function AboutUs() {
   const startStatsAnimation = () => {
     const duration = 2000
     const startTime = Date.now()
-    const targetStats = { founded: 2023, team: 5, countries: 2 }
+    const targetStats = { founded: 2023, team: 4, countries: 2 }
     
     const animate = () => {
       const elapsed = Date.now() - startTime
@@ -88,7 +88,7 @@ export function AboutUs() {
   ]
 
   const reasons = [
-    { icon: Award, title: "Award Winning", desc: "Recognized excellence in digital innovation and design quality", metric: "12 Awards", gradient: "from-yellow-500 to-orange-500" },
+    { icon: Award, title: "Excellent Work", desc: "Recognized excellence in digital innovation and design quality", metric: "50+ Projects", gradient: "from-yellow-500 to-orange-500" },
     { icon: Users, title: "Client Focused", desc: "Your success is our priority with dedicated support and collaboration", metric: "98% Retention", gradient: "from-green-500 to-emerald-500" },
     { icon: Lightbulb, title: "Innovative Approach", desc: "Cutting-edge solutions that keep you ahead of the competition", metric: "50+ Projects", gradient: "from-blue-500 to-cyan-500" },
   ]

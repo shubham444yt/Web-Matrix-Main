@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sparkles, Zap, Globe, ArrowRight, Code, Palette, Cpu, Rocket } from "lucide-react"
 
@@ -113,18 +114,18 @@ export function Hero() {
         ))}
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 z-10 pl-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 z-10 lg:pl-10">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text Content */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`order-1 flex flex-col items-center lg:items-start transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 glass-card rounded-full px-5 py-2.5 mb-8 animate-slide-up border-white/10 glow-border">
+            <div className="inline-flex items-center gap-2 glass-card rounded-full px-5 py-2.5 mb-8 animate-slide-up border-white/10 glow-border mx-auto lg:mx-0">
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_10px_#22c55e]" />
               <span className="text-sm font-medium text-gray-300">Next-Gen Digital Solutions</span>
               <Sparkles className="w-4 h-4 text-purple-400" />
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight text-left">
+            <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight text-center lg:text-left">
               <span className="block mb-1 animate-slide-up" style={{ animationDelay: '0.1s' }}>
                 Building
               </span>
@@ -140,7 +141,7 @@ export function Hero() {
             </h1>
             
             <p 
-              className="text-gray-400 text-base md:text-lg max-w-xl text-left mb-8 leading-relaxed animate-slide-up"
+              className="text-gray-400 text-base md:text-lg max-w-xl text-center lg:text-left mb-8 leading-relaxed animate-slide-up"
               style={{ animationDelay: '0.4s' }}
             >
               We design, build, and scale innovative products with 
@@ -149,7 +150,7 @@ export function Hero() {
             </p>
             
             <div 
-              className="flex flex-col sm:flex-row items-center justify-start gap-4 animate-slide-up mb-10"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-slide-up mb-10"
               style={{ animationDelay: '0.5s' }}
             >
               <Link href="/contact">
@@ -168,39 +169,10 @@ export function Hero() {
               </Link>
             </div>
 
-            {/* Social Proof Benchmarks */}
-            <div 
-              className="flex flex-wrap items-center gap-6 animate-slide-up"
-              style={{ animationDelay: '0.7s' }}
-            >
-              <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  {[1,2,3].map(i => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-[#050510] bg-gray-800 flex items-center justify-center overflow-hidden">
-                      <div className={`w-full h-full bg-gradient-to-br from-purple-${i*200} to-pink-${i*200}`} />
-                    </div>
-                  ))}
-                </div>
-                <div className="text-sm">
-                  <span className="text-white font-bold block">Trusted by 50+ clients</span>
-                  <div className="flex gap-1">
-                    {[1,2,3,4,5].map(i => <Sparkles key={i} className="w-3 h-3 text-yellow-500 fill-yellow-500" />)}
-                  </div>
-                </div>
-              </div>
-              <div className="h-10 w-px bg-white/10 hidden sm:block" />
-              <div className="text-sm">
-                <div className="flex items-center gap-2">
-                  <Rocket className="w-5 h-5 text-purple-400" />
-                  <span className="text-white font-bold">Delivered 100+ projects</span>
-                </div>
-                <span className="text-gray-500">Across 12 industries</span>
-              </div>
-            </div>
           </div>
-
+          
           {/* Right Column: Interactive 3D Object Asset */}
-          <div className={`relative flex items-center justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+          <div className={`order-2 relative flex items-center justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
             <div className="relative w-full max-w-[600px] aspect-square">
               {/* Outer Glow Circles */}
               <div className="absolute inset-0 rounded-full bg-purple-500/10 blur-[100px] animate-pulse-glow" />
@@ -221,9 +193,12 @@ export function Hero() {
 
               {/* Main bg Image */}
               <div className="relative z-10 w-full h-full hero-image-glow animate-float-gentle flex items-center justify-center p-6">
-                <img 
+                <Image 
                   src="/bgx.png" 
-                  alt="Holographic Tech Display" 
+                  alt="Holographic Tech Display for web development services" 
+                  width={600}
+                  height={600}
+                  priority
                   className="w-full h-full object-contain animate-glow-intense rounded-2xl mb-2"
                 />
                 
@@ -240,6 +215,35 @@ export function Hero() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Social Proof Benchmarks - Responsive Positioning */}
+          <div 
+            className={`order-3 lg:col-span-1 lg:mt-[-2rem] flex flex-wrap items-center justify-center lg:justify-start gap-6 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <div className="flex items-center gap-2">
+              <div className="flex -space-x-2">
+                {[1,2,3].map(i => (
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-[#050510] bg-gray-800 flex items-center justify-center overflow-hidden">
+                    <div className={`w-full h-full bg-gradient-to-br from-purple-${i*200} to-pink-${i*200}`} />
+                  </div>
+                ))}
+              </div>
+              <div className="text-sm">
+                <span className="text-white font-bold block">Trusted by 50+ clients</span>
+                <div className="flex gap-1">
+                  {[1,2,3,4,5].map(i => <Sparkles key={i} className="w-3 h-3 text-yellow-500 fill-yellow-500" />)}
+                </div>
+              </div>
+            </div>
+            <div className="h-10 w-px bg-white/10 hidden sm:block" />
+            <div className="text-sm text-center lg:text-left">
+              <div className="flex items-center gap-2 justify-center lg:justify-start">
+                <Rocket className="w-5 h-5 text-purple-400" />
+                <span className="text-white font-bold">Delivered 100+ projects</span>
+              </div>
+              <span className="text-gray-500">Across 12 industries</span>
             </div>
           </div>
         </div>

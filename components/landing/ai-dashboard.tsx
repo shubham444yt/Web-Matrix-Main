@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Sparkles, CheckCircle2, Zap, MessageSquare, Globe, Send, Mic, Paperclip, MoreHorizontal, Bot, User, TrendingUp, Brain, Cpu, Loader2 } from "lucide-react"
+import { Sparkles, CheckCircle2, Zap, MessageSquare, Globe, Send, Mic, Paperclip, MoreHorizontal, Bot, User, TrendingUp, Brain, Cpu, Loader2, Database, FileText } from "lucide-react"
 
 export function AIDashboard() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -14,7 +14,7 @@ export function AIDashboard() {
   const [messageIndex, setMessageIndex] = useState(0)
   const [particlePositions, setParticlePositions] = useState<Array<{ x: number; y: number; delay: number }>>([])
 
-  const fullMessage = "Here you go, found more content related to product-led growth strategies. I've analyzed 47 sources and identified 12 key insights that match your research criteria."
+  const fullMessage = "Web Matrix is a digital solutions company that helps businesses create 1000x more value than they put in. We specialize in web development, ui/ux design, software development, iot projects, and college projects. We are a team of passionate developers who are dedicated to providing our clients with the best possible solutions."
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -80,12 +80,12 @@ export function AIDashboard() {
   }, [isVisible])
 
   const squares = [
-    { gradient: "from-purple-600 to-purple-500", label: "Market Analysis" },
-    { gradient: "from-purple-500 to-purple-400", label: "Trend Detection" },
-    { gradient: "from-purple-400 to-purple-300", label: "Predictive AI" },
-    { gradient: "from-pink-600 to-pink-500", label: "Data Mining" },
-    { gradient: "from-pink-500 to-pink-400", label: "NLP Processing" },
-    { gradient: "from-pink-400 to-pink-300", label: "Auto Reports" },
+    { gradient: "from-purple-600 to-purple-500", label: "Market Analysis", icon: TrendingUp },
+    { gradient: "from-purple-500 to-purple-400", label: "Trend Detection", icon: Zap },
+    { gradient: "from-purple-400 to-purple-300", label: "Predictive AI", icon: Brain },
+    { gradient: "from-pink-600 to-pink-500", label: "Data Mining", icon: Database },
+    { gradient: "from-pink-500 to-pink-400", label: "NLP Processing", icon: MessageSquare },
+    { gradient: "from-pink-400 to-pink-300", label: "Auto Reports", icon: FileText },
   ]
 
   return (
@@ -271,6 +271,7 @@ export function AIDashboard() {
                       onMouseEnter={() => setHoveredSquare(i)}
                       onMouseLeave={() => setHoveredSquare(null)}
                     >
+                      <square.icon className="w-7 h-7 text-white/90" />
                       {hoveredSquare === i && (
                         <span className="text-[10px] text-white font-medium text-center absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-black/50 px-2 py-0.5 rounded-full">
                           {square.label}
@@ -321,15 +322,9 @@ export function AIDashboard() {
 
                 {/* Action Buttons with animations */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <button className="px-4 py-2 rounded-full bg-white/10 text-gray-300 text-sm hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                    Abstract
-                  </button>
                   <button className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium flex items-center gap-2 transition-all duration-300 hover:scale-105 shadow-lg shadow-purple-500/30">
                     <Sparkles className="w-4 h-4" />
-                    Find similar content
-                  </button>
-                  <button className="px-4 py-2 rounded-full bg-white/10 text-gray-300 text-sm hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                    Create a report
+                    About Web Matrix
                   </button>
                 </div>
 
@@ -347,7 +342,7 @@ export function AIDashboard() {
                       {!isTyping && displayMessage && (
                         <div className="mt-2 flex items-center gap-2 text-xs text-green-400">
                           <CheckCircle2 className="w-3 h-3" />
-                          <span>Analysis complete • 12 insights found</span>
+                          <span>Analysis complete • Start from today.</span>
                         </div>
                       )}
                     </div>

@@ -2,9 +2,15 @@ import { Navbar } from "@/components/landing/navbar"
 import { Projects } from "@/components/landing/projects"
 import { Footer } from "@/components/landing/footer"
 
-export const metadata = {
-  title: "Our Projects - Web Matrix",
-  description: "Explore our portfolio of successful projects spanning web development, UI/UX design, IoT, and software development.",
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Our Portfolio | Software & IoT Projects | Web Matrix",
+  description: "Explore our portfolio of successful projects spanning web development, UI/UX design, IoT, and software development. Check out student project solutions.",
+  keywords: ["portfolio", "software projects", "web development portfolio", "IoT projects", "student project solutions", "case studies"],
+  alternates: {
+    canonical: "/projects",
+  },
 }
 
 export default function ProjectsPage() {

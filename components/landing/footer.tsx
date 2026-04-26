@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Twitter, Github, Linkedin, Instagram, Mail, Heart } from "lucide-react"
 
 export function Footer() {
@@ -17,9 +18,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-6 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center shadow-lg group-hover:shadow-purple-500/30 transition-all">
-                <span className="text-white font-bold text-lg">W</span>
-              </div>
+              <Image 
+                src="/images/icon.svg" 
+                alt="Web Matrix Logo" 
+                width={40} 
+                height={40} 
+                className="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110" 
+              />
               <span className="text-white font-bold text-xl tracking-tight">Web Matrix</span>
             </Link>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">

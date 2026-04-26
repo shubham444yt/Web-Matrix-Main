@@ -404,7 +404,7 @@ export function Testimonials() {
             <Sparkles className="w-3 h-3 text-yellow-400" />
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
-            {["TechStart", "InnovateCo", "StartupX", "DataFlow", "GrowthHub"].map((company, i) => (
+            {["RohTech", "GoogleCloud", "Xrisu 4.4", "Nexcore Alliance"].map((company, i) => (
               <span 
                 key={i} 
                 className="text-gray-400 text-lg font-semibold transition-all duration-300 hover:text-white hover:scale-110 cursor-pointer"
@@ -425,7 +425,7 @@ export function Testimonials() {
           <div className="glass-card rounded-full px-6 py-2">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs text-gray-400">200+</span>
+              <span className="text-xs text-gray-400">100+</span>
               <span className="text-xs text-white">Happy Clients</span>
             </div>
           </div>

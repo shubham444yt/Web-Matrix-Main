@@ -2,9 +2,15 @@ import { Navbar } from "@/components/landing/navbar"
 import { Teams } from "@/components/landing/teams"
 import { Footer } from "@/components/landing/footer"
 
-export const metadata = {
-  title: "Our Team - Web Matrix",
-  description: "Meet the talented individuals behind Web Matrix. Our diverse team of experts is dedicated to delivering exceptional digital solutions.",
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Our Team | Web Matrix Expert Developers & Designers",
+  description: "Meet the talented individuals behind Web Matrix. Our diverse team of experts is dedicated to delivering exceptional digital solutions and custom software.",
+  keywords: ["web matrix team", "expert developers", "UI/UX designers", "software engineering team", "tech professionals"],
+  alternates: {
+    canonical: "/teams",
+  },
 }
 
 export default function TeamsPage() {

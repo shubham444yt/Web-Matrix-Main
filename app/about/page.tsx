@@ -2,9 +2,15 @@ import { Navbar } from "@/components/landing/navbar"
 import { AboutUs } from "@/components/landing/about-us"
 import { Footer } from "@/components/landing/footer"
 
-export const metadata = {
-  title: "About Us - Web Matrix",
-  description: "Learn more about Web Matrix, our mission, vision, and the team behind our innovative digital solutions.",
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About Web Matrix | Digital Transformation Experts",
+  description: "Learn about Web Matrix, a top web development and software solutions company. Discover our mission to drive digital innovation globally.",
+  keywords: ["about web matrix", "web development experts", "software solutions company", "digital transformation", "IT agency"],
+  alternates: {
+    canonical: "/about",
+  },
 }
 
 export default function AboutPage() {

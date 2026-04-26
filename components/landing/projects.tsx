@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { ExternalLink, Star, Users, ShoppingCart, ArrowRight, Sparkles, Zap, Eye, Heart, TrendingUp, Award, Code, Layout, Smartphone, Database, Cloud, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 const projects = [
   {
@@ -73,6 +74,43 @@ const projects = [
     liveUrl: "https://smartai-tools-hub.netlify.app/",
     githubUrl: "#",
   },
+
+  {
+    title: "Hospital Website",
+    category: "Web Development",
+    description: "A hospital website is a website that provides information about the hospital, its services, and facilities.",
+    image: "/images/Hospital.png",
+    tags: ["HTML", "Tailwind", "JavaScript"],
+    gradient: "from-blue-500 to-cyan-500",
+    stats: { sales: "50K+", rating: 4.9 },
+    liveUrl: "https://savarkar-hospital.netlify.app/",
+    githubUrl: "#",
+  },
+
+  {
+    title: "Coffee Shop Website",
+    category: "Web Development",
+    description: "A coffee shop website is a website that provides information about the coffee shop, its products, and services.",
+    image: "/images/cafe.png",
+    tags: ["HTML", "Tailwind", "Three.js"],
+    gradient: "from-amber-500 to-yellow-500",
+    stats: { sales: "50K+", rating: 4.9 },
+    liveUrl: "https://tea-webpage.netlify.app/",
+    githubUrl: "#",
+  },
+
+  {
+    title: "Doctor's Appoinment Booking",
+    category: "Web Development",
+    description: "A Doctor's Appoinment Booking is a website that can helps to book an appoinment with a doctor.",
+    image: "/images/doctor.png",
+    tags: ["Next.js", "Tailwind", "JavaScript"],
+    gradient: "from-green-500 to-yellow-500",
+    stats: { sales: "50K+", rating: 4.9 },
+    liveUrl: "https://med-sphere-clinic.vercel.app/",
+    githubUrl: "#",
+  },
+
  {
     title: "AI Study Portal",
     category: "Web Development",
@@ -355,9 +393,11 @@ export function Projects() {
               {/* Image Section */}
               <div className="relative h-56 overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 z-0`} />
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title}
+                  width={500}
+                  height={300}
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                 />
                 

@@ -8,6 +8,7 @@ import { AIDashboard } from "@/components/landing/ai-dashboard"
 import { Testimonials } from "@/components/landing/testimonials"
 import { CTA } from "@/components/landing/cta"
 import { Footer } from "@/components/landing/footer"
+import { Services } from "@/components/landing/services"
 
 export default function Home() {
   return (
@@ -50,7 +51,9 @@ export default function Home() {
         <LogoCloud />
         <Features />
         <Sources />
-        <Discover />
+        {/* <Discover /> */}
+        
+        <Services/>
         <AIDashboard />
         <Testimonials />
         <CTA />

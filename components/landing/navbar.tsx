@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -33,9 +34,13 @@ export function Navbar() {
         <div className={`glass-card rounded-full px-6 py-3 flex items-center justify-between transition-all duration-500 ${scrolled ? 'glow-border' : ''}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-300 group-hover:scale-110">
-              <span className="text-white font-bold text-lg">W</span>
-            </div>
+            <Image 
+              src="/images/icon.svg" 
+              alt="Web Matrix Logo" 
+              width={40} 
+              height={40} 
+              className="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110" 
+            />
             <span className="text-white font-bold text-xl tracking-tight">Web Matrix</span>
           </Link>
 
@@ -61,7 +66,7 @@ export function Navbar() {
           <div className="hidden lg:block">
             <Link href="/contact">
               <Button className="relative bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white rounded-full px-8 py-2.5 font-semibold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 overflow-hidden group">
-                <span className="relative z-10">Get Started</span>
+                <span className="relative z-10">Contact Us</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
               </Button>
             </Link>

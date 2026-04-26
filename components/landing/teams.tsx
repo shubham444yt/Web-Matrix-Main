@@ -435,11 +435,11 @@ export function Teams() {
             {/* Team stats */}
             <div className="flex justify-center gap-8 mt-8 pt-6 border-t border-white/10">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gradient">50+</div>
+                <div className="text-2xl font-bold text-gradient">4+</div>
                 <div className="text-xs text-gray-500">Team Members</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gradient">12+</div>
+                <div className="text-2xl font-bold text-gradient">2+</div>
                 <div className="text-xs text-gray-500">Countries</div>
               </div>
               <div className="text-center">
