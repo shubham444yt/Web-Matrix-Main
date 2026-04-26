@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 
 const partners = [
   { name: "RohTech" },
-  { name: "Xrisu_4.4" },
+  // { name: "Xrisu_4.4" },
   { name: "GoogleCloud" },
   { name: "Nexcore Alliance" },
   { name: "WebMatrix" },
