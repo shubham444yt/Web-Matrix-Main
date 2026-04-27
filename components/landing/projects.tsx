@@ -490,6 +490,28 @@ export function Projects() {
                     </div>
                   ))}
                 </div>
+
+                {/* Mobile Action Buttons - Visible only on mobile */}
+                <div className="flex gap-3 mt-6 md:hidden">
+                  <a 
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-300 text-xs font-semibold active:scale-95 transition-all"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Live Demo
+                  </a>
+                  <a 
+                    href={`https://wa.me/919224617090?text=${encodeURIComponent(`I Really like your Project "${project.title}" and I want to buy this project.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-green-600/20 border border-green-500/30 text-green-400 text-xs font-semibold active:scale-95 transition-all"
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    Buy Now
+                  </a>
+                </div>
               </div>
 
               {/* Hover indicator line */}

@@ -502,13 +502,13 @@ export function Contact() {
                     gradient: "from-cyan-500 to-blue-500"
                   },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-5 group">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <item.icon className="w-6 h-6 text-white" />
+                  <div key={i} className="flex items-start gap-4 sm:gap-5 group">
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-gray-400 text-sm mb-1">{item.label}</p>
-                      <p className="text-white font-medium text-lg break-words">{item.value}</p>
+                      <p className="text-white font-medium text-base sm:text-lg break-words sm:break-normal">{item.value}</p>
                     </div>
                   </div>
                 ))}

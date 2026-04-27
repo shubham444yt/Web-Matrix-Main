@@ -89,7 +89,7 @@ export function AIDashboard() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-32 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatParticle {
           0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
@@ -210,52 +210,54 @@ export function AIDashboard() {
       <div className="max-w-5xl mx-auto relative">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Main Dashboard Card */}
-          <div className="glass-card-strong rounded-3xl p-8 glow-border-strong relative overflow-hidden">
+          <div className="glass-card-strong rounded-3xl p-4 sm:p-8 glow-border-strong relative overflow-hidden">
             {/* Animated decorative glow */}
             <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-40 bg-gradient-to-b from-purple-500/20 to-transparent blur-2xl animate-pulse" />
             
             {/* Tags Row with interactive hover */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              <div className="glass-card rounded-full px-5 py-2.5 flex items-center gap-2 group cursor-pointer hover:border-purple-500/50 transition-all duration-300">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
+              <div className="glass-card rounded-full px-4 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 group cursor-pointer hover:border-purple-500/50 transition-all duration-300">
                 <Sparkles className="w-4 h-4 text-purple-400 group-hover:rotate-12 transition-transform" />
-                <span className="text-white text-sm">Harnessing AI for market</span>
+                <span className="text-white text-xs sm:text-sm">Harnessing AI for market</span>
                 <Brain className="w-3 h-3 text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <div className="glass-card rounded-full px-5 py-2.5 flex items-center gap-2 group cursor-pointer hover:border-yellow-500/50 transition-all duration-300">
+              <div className="glass-card rounded-full px-4 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 group cursor-pointer hover:border-yellow-500/50 transition-all duration-300">
                 <Zap className="w-4 h-4 text-yellow-400 group-hover:scale-110 transition-transform" />
-                <span className="text-gray-300 text-sm">Data analysis & insights</span>
+                <span className="text-gray-300 text-xs sm:text-sm">Data analysis & insights</span>
               </div>
-              <div className="glass-card rounded-full px-5 py-2.5 flex items-center gap-2 group cursor-pointer hover:border-cyan-500/50 transition-all duration-300">
+              <div className="glass-card rounded-full px-4 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 group cursor-pointer hover:border-cyan-500/50 transition-all duration-300">
                 <Cpu className="w-4 h-4 text-cyan-400 group-hover:animate-spin" style={{ animationDuration: '2s' }} />
-                <span className="text-gray-300 text-sm">Real-time processing</span>
+                <span className="text-gray-300 text-xs sm:text-sm">Real-time processing</span>
               </div>
             </div>
 
             {/* Tab Navigation */}
-            <div className="flex gap-2 mb-6 border-b border-white/10 pb-3">
-              {["chat", "insights", "history"].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    activeTab === tab
-                      ? "bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-400 border border-purple-500/30"
-                      : "text-gray-400 hover:text-white hover:bg-white/5"
-                  }`}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </button>
-              ))}
+            <div className="flex flex-wrap items-center gap-2 mb-6 border-b border-white/10 pb-3">
+              <div className="flex gap-1 sm:gap-2">
+                {["chat", "insights", "history"].map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
+                      activeTab === tab
+                        ? "bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-400 border border-purple-500/30"
+                        : "text-gray-400 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  </button>
+                ))}
+              </div>
               <div className="ml-auto flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs text-gray-400">AI Agent Active</span>
+                <span className="text-[10px] sm:text-xs text-gray-400">AI Agent Active</span>
               </div>
             </div>
 
             {/* Content Grid */}
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Left - AI visualization with animated squares */}
-              <div className="glass-card rounded-2xl p-6 bg-white/5">
+              <div className="glass-card rounded-2xl p-4 sm:p-6 bg-white/5">
                 <div className="flex items-center gap-2 mb-6">
                   <Sparkles className="w-5 h-5 text-purple-400 animate-pulse" />
                   <span className="text-white">How AI is revolutionizing</span>
@@ -263,11 +265,11 @@ export function AIDashboard() {
                 </div>
                 
                 {/* Animated Color dots grid */}
-                <div className="grid grid-cols-3 gap-4 justify-items-center py-4">
+                <div className="grid grid-cols-2 min-[400px]:grid-cols-3 gap-3 sm:gap-4 justify-items-center py-4">
                   {squares.map((square, i) => (
                     <div 
                       key={i}
-                      className={`animated-square w-16 h-16 rounded-2xl bg-gradient-to-br ${square.gradient} border-2 border-purple-500/30 shadow-lg shadow-purple-500/20 flex items-center justify-center transition-all duration-300`}
+                      className={`animated-square w-14 h-14 min-[400px]:w-16 min-[400px]:h-16 rounded-2xl bg-gradient-to-br ${square.gradient} border-2 border-purple-500/30 shadow-lg shadow-purple-500/20 flex items-center justify-center transition-all duration-300`}
                       onMouseEnter={() => setHoveredSquare(i)}
                       onMouseLeave={() => setHoveredSquare(null)}
                     >
@@ -298,7 +300,7 @@ export function AIDashboard() {
               </div>
 
               {/* Right - Animated Chat interface */}
-              <div className="glass-card rounded-2xl p-6 bg-white/5">
+              <div className="glass-card rounded-2xl p-4 sm:p-6 bg-white/5">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
@@ -350,18 +352,18 @@ export function AIDashboard() {
                 </div>
 
                 {/* Input area with interactions */}
-                <div className="glass-card rounded-xl p-3 flex items-center justify-between bg-white/5 group focus-within:border-purple-500/50 transition-all duration-300">
+                <div className="glass-card rounded-xl p-2 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white/5 group focus-within:border-purple-500/50 transition-all duration-300">
                   <div className="flex items-center gap-3 flex-1">
                     <MessageSquare className="w-5 h-5 text-gray-400 group-focus-within:text-purple-400 transition-colors" />
                     <input
                       type="text"
                       value={chatMessage}
                       onChange={(e) => setChatMessage(e.target.value)}
-                      placeholder="Ask me anything about your research..."
+                      placeholder="Ask me..."
                       className="bg-transparent text-white placeholder-gray-400 outline-none flex-1 text-sm"
                     />
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-end gap-2">
                     <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110">
                       <Paperclip className="w-4 h-4 text-gray-400" />
                     </button>
@@ -390,8 +392,8 @@ export function AIDashboard() {
             </div>
 
             {/* Bottom Status Bar */}
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
-              <div className="flex items-center gap-4">
+            <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] sm:text-xs text-gray-400">
+              <div className="flex flex-wrap items-center justify-center gap-4">
                 <div className="flex items-center gap-1">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                   <span>AI Processing</span>

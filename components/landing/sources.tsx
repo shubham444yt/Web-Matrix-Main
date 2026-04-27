@@ -74,7 +74,7 @@ export function Sources() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-32 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatSource {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -180,9 +180,9 @@ export function Sources() {
       </div>
 
       <div className="max-w-7xl mx-auto relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content with animated text */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'} text-center lg:text-left`}>
             {/* Animated badge */}
             <div className="inline-flex items-center gap-2 glass-card rounded-full px-4 py-1.5 mb-6 border-animate">
               <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
@@ -190,48 +190,48 @@ export function Sources() {
               <Zap className="w-3 h-3 text-yellow-500" />
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 leading-tight">
               Innovative
             </h2>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 leading-tight">
               <span className="text-gradient">Solutions for Your</span>
             </h2>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
               Digital Growth
             </h2>
             
             {/* Animated stats row */}
-            <div className="flex gap-8 mb-8">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+            <div className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8 mb-10">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-white">500+</div>
-                  <div className="text-xs text-gray-400">Projects delivered</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
-                  <TrendingUp className="w-4 h-4 text-purple-400" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-white">98%</div>
-                  <div className="text-xs text-gray-400">Client Satisfaction</div>
+                <div className="text-left">
+                  <div className="text-2xl font-bold text-white leading-none">500+</div>
+                  <div className="text-[10px] sm:text-xs text-gray-400 mt-1 uppercase tracking-wider">Projects</div>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                  <Clock className="w-4 h-4 text-cyan-400" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="w-5 h-5 text-purple-400" />
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-white">24/7</div>
-                  <div className="text-xs text-gray-400">Expert Support</div>
+                <div className="text-left">
+                  <div className="text-2xl font-bold text-white leading-none">98%</div>
+                  <div className="text-[10px] sm:text-xs text-gray-400 mt-1 uppercase tracking-wider">Happy Clients</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 text-cyan-400" />
+                </div>
+                <div className="text-left">
+                  <div className="text-2xl font-bold text-white leading-none">24/7</div>
+                  <div className="text-[10px] sm:text-xs text-gray-400 mt-1 uppercase tracking-wider">Support</div>
                 </div>
               </div>
             </div>
             
-            <p className="text-gray-400 text-lg mb-10 leading-relaxed max-w-lg">
+            <p className="text-gray-400 text-lg mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
               Empowering startups, businesses, and students with custom web apps, professional UI/UX, and innovative IoT solutions.
             </p>
             
@@ -323,7 +323,7 @@ export function Sources() {
                 </div>
 
                 {/* Interactive Content Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   {sources.map((source, i) => (
                     <div 
                       key={i}

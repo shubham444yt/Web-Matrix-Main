@@ -277,106 +277,161 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* 3D Testimonials Carousel */}
-        <div className={`relative h-[480px] md:h-[420px] transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {getVisibleTestimonials().map((testimonial, i) => (
-            <div
-              key={`${testimonial.name}-${testimonial.position}`}
-              className={`absolute top-0 left-1/2 w-full max-w-lg transition-all duration-700 ease-out cursor-pointer ${
-                testimonial.position === 0 
-                  ? 'z-30 -translate-x-1/2 scale-100 opacity-100' 
-                  : testimonial.position === -1 
-                    ? 'z-20 -translate-x-[120%] md:-translate-x-[130%] scale-90 opacity-40 hover:opacity-60' 
-                    : 'z-20 translate-x-[20%] md:translate-x-[30%] scale-90 opacity-40 hover:opacity-60'
-              }`}
-              onMouseEnter={() => setHoveredCard(testimonial.originalIndex)}
-              onMouseLeave={() => setHoveredCard(null)}
-              onClick={() => {
-                if (testimonial.position !== 0) {
-                  setActiveIndex(testimonial.originalIndex)
-                }
-              }}
-            >
-              <div className={`glass-card-strong rounded-3xl p-8 md:p-10 ${testimonial.position === 0 ? 'glow-border-strong' : ''} transition-all duration-300 ${
-                hoveredCard === testimonial.originalIndex ? 'transform scale-[1.02]' : ''
-              }`}>
-                {/* Animated Quote icon */}
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center mb-6 shadow-lg transition-all duration-300 ${
-                  hoveredCard === testimonial.originalIndex ? 'scale-110 rotate-6' : ''
+        {/* Testimonials Display */}
+        <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Desktop View - 3D Carousel */}
+          <div className="hidden md:block relative h-[420px]">
+            {getVisibleTestimonials().map((testimonial, i) => (
+              <div
+                key={`${testimonial.name}-${testimonial.position}`}
+                className={`absolute top-0 left-1/2 w-full max-w-lg transition-all duration-700 ease-out cursor-pointer ${
+                  testimonial.position === 0 
+                    ? 'z-30 -translate-x-1/2 scale-100 opacity-100' 
+                    : testimonial.position === -1 
+                      ? 'z-20 -translate-x-[120%] md:-translate-x-[130%] scale-90 opacity-40 hover:opacity-60' 
+                      : 'z-20 translate-x-[20%] md:translate-x-[30%] scale-90 opacity-40 hover:opacity-60'
+                }`}
+                onMouseEnter={() => setHoveredCard(testimonial.originalIndex)}
+                onMouseLeave={() => setHoveredCard(null)}
+                onClick={() => {
+                  if (testimonial.position !== 0) {
+                    setActiveIndex(testimonial.originalIndex)
+                  }
+                }}
+              >
+                <div className={`glass-card-strong rounded-3xl p-8 md:p-10 ${testimonial.position === 0 ? 'glow-border-strong' : ''} transition-all duration-300 ${
+                  hoveredCard === testimonial.originalIndex ? 'transform scale-[1.02]' : ''
                 }`}>
-                  <Quote className="w-6 h-6 text-white" />
+                  {/* Card UI Content */}
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center mb-6 shadow-lg transition-all duration-300 ${
+                    hoveredCard === testimonial.originalIndex ? 'scale-110 rotate-6' : ''
+                  }`}>
+                    <Quote className="w-6 h-6 text-white" />
+                  </div>
+                  
+                  <p className="text-gray-200 text-lg leading-relaxed mb-8 relative">
+                    <span className="text-purple-400 text-2xl absolute -top-2 -left-3 opacity-50">"</span>
+                    {testimonial.content}
+                    <span className="text-purple-400 text-2xl absolute -bottom-4 right-0 opacity-50">"</span>
+                  </p>
+                  
+                  {testimonial.position === 0 && (
+                    <div className="absolute top-6 right-6">
+                      <div className="glass-card rounded-full px-3 py-1.5 flex items-center gap-1">
+                        <TrendingUp className="w-3 h-3 text-green-400" />
+                        <span className="text-xs text-green-400 font-medium">{testimonial.metric}</span>
+                      </div>
+                    </div>
+                  )}
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${testimonial.gradient} p-0.5 transition-all duration-300 ${
+                        hoveredCard === testimonial.originalIndex ? 'scale-105' : ''
+                      }`}>
+                        <img 
+                          src={testimonial.avatar} 
+                          alt={testimonial.name}
+                          className="w-full h-full rounded-xl object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold text-lg flex items-center gap-2">
+                          {testimonial.name}
+                          {testimonial.position === 0 && (
+                            <Zap className="w-3 h-3 text-yellow-400 animate-pulse" />
+                          )}
+                        </h4>
+                        <p className="text-gray-400 text-sm flex items-center gap-1">
+                          <Briefcase className="w-3 h-3" />
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-1">
+                      {[...Array(testimonial.rating)].map((_, j) => (
+                        <Star 
+                          key={j} 
+                          className={`w-4 h-4 text-yellow-400 fill-yellow-400 transition-all duration-300 ${
+                            hoveredCard === testimonial.originalIndex ? 'star-animate' : ''
+                          }`}
+                          style={{ animationDelay: `${j * 0.1}s` }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {testimonial.position !== 0 && hoveredCard === testimonial.originalIndex && (
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-purple-400 animate-pulse">
+                      Click to view
+                    </div>
+                  )}
                 </div>
-                
-                {/* Content with animated text */}
-                <p className="text-gray-200 text-lg leading-relaxed mb-8 relative">
-                  <span className="text-purple-400 text-2xl absolute -top-2 -left-3 opacity-50">"</span>
-                  {testimonial.content}
-                  <span className="text-purple-400 text-2xl absolute -bottom-4 right-0 opacity-50">"</span>
-                </p>
-                
-                {/* Metric badge */}
-                {testimonial.position === 0 && (
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile View - Responsive Grid (No scrolling) */}
+          <div className="md:hidden grid grid-cols-1 gap-8 px-2">
+            {testimonials.map((testimonial, i) => (
+              <div key={i} className="w-full">
+                <div className="glass-card-strong aspect-square rounded-3xl p-6 sm:p-8 glow-border-strong relative flex flex-col justify-between overflow-hidden">
+                  <div>
+                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center mb-6 shadow-lg`}>
+                      <Quote className="w-5 h-5 text-white" />
+                    </div>
+                    
+                    <p className="text-gray-200 text-base leading-relaxed mb-4 relative whitespace-normal break-words overflow-hidden line-clamp-4">
+                      <span className="text-purple-400 text-2xl absolute -top-2 -left-3 opacity-50">"</span>
+                      {testimonial.content}
+                      <span className="text-purple-400 text-2xl absolute -bottom-4 right-0 opacity-50">"</span>
+                    </p>
+                  </div>
+                  
                   <div className="absolute top-6 right-6">
                     <div className="glass-card rounded-full px-3 py-1.5 flex items-center gap-1">
                       <TrendingUp className="w-3 h-3 text-green-400" />
                       <span className="text-xs text-green-400 font-medium">{testimonial.metric}</span>
                     </div>
                   </div>
-                )}
-                
-                {/* Author section */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${testimonial.gradient} p-0.5 transition-all duration-300 ${
-                      hoveredCard === testimonial.originalIndex ? 'scale-105' : ''
-                    }`}>
-                      <img 
-                        src={testimonial.avatar} 
-                        alt={testimonial.name}
-                        className="w-full h-full rounded-xl object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold text-lg flex items-center gap-2">
-                        {testimonial.name}
-                        {testimonial.position === 0 && (
-                          <Zap className="w-3 h-3 text-yellow-400 animate-pulse" />
-                        )}
-                      </h4>
-                      <p className="text-gray-400 text-sm flex items-center gap-1">
-                        <Briefcase className="w-3 h-3" />
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </div>
                   
-                  {/* Animated Rating Stars */}
-                  <div className="flex items-center gap-1">
-                    {[...Array(testimonial.rating)].map((_, j) => (
-                      <Star 
-                        key={j} 
-                        className={`w-4 h-4 text-yellow-400 fill-yellow-400 transition-all duration-300 ${
-                          hoveredCard === testimonial.originalIndex ? 'star-animate' : ''
-                        }`}
-                        style={{ animationDelay: `${j * 0.1}s` }}
-                      />
-                    ))}
+                  <div className="flex items-center justify-between gap-4 mt-auto">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${testimonial.gradient} p-0.5 flex-shrink-0`}>
+                        <img 
+                          src={testimonial.avatar} 
+                          alt={testimonial.name}
+                          className="w-full h-full rounded-xl object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="text-white font-semibold text-base truncate">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-gray-400 text-xs truncate">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-0.5 flex-shrink-0">
+                      {[...Array(testimonial.rating)].map((_, j) => (
+                        <Star 
+                          key={j} 
+                          className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
-
-                {/* Hover indicator for side cards */}
-                {testimonial.position !== 0 && hoveredCard === testimonial.originalIndex && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-purple-400 animate-pulse">
-                    Click to view
-                  </div>
-                )}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Animated Dots indicator */}
-        <div className="flex items-center justify-center gap-2 mt-8">
+        {/* Animated Dots indicator - Hidden on mobile as scrolling is native */}
+        <div className="hidden md:flex items-center justify-center gap-2 mt-8">
           {testimonials.map((_, i) => (
             <button
               key={i}
@@ -421,7 +476,7 @@ export function Testimonials() {
         </div>
 
         {/* Live stats bar */}
-        <div className={`mt-12 flex justify-center gap-8 text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`mt-12 flex flex-wrap justify-center gap-4 sm:gap-8 text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="glass-card rounded-full px-6 py-2">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />

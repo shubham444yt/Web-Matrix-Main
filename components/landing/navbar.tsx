@@ -90,7 +90,7 @@ export function Navbar() {
               : 'opacity-0 -translate-y-4 pointer-events-none scale-95 invisible'
           }`}
         >
-          <div className="glass-card-strong rounded-3xl p-6 shadow-2xl border-purple-500/30 overflow-hidden">
+          <div className="bg-[#08081a]/98 backdrop-blur-3xl rounded-3xl p-6 shadow-2xl border border-purple-500/40 overflow-hidden">
             <div className="space-y-2">
               {navItems.map((item, index) => (
                 <Link 
@@ -99,7 +99,7 @@ export function Navbar() {
                   className={`block py-4 px-5 rounded-2xl transition-all duration-300 ${
                     pathname === item.href 
                       ? 'text-white bg-white/15 shadow-inner' 
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      : 'text-gray-200 hover:text-white hover:bg-white/5'
                   }`}
                   style={{ transitionDelay: `${index * 50}ms` }}
                   onClick={() => setIsOpen(false)}
@@ -113,7 +113,7 @@ export function Navbar() {
               <div className="pt-6">
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="w-full py-7 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white rounded-2xl font-bold text-lg shadow-xl shadow-purple-500/20 hover:scale-[1.02] active:scale-95 transition-all">
-                    Get Started Now
+                    Contact Us
                   </Button>
                 </Link>
               </div>
