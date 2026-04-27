@@ -51,7 +51,7 @@ const teamMembers = [
     gradient: "from-green-500 to-emerald-500",
     experience: "3+ years",
     projects: "10+",
-    location: "UP",
+    location: "Mumbai",
     linkedin: "https://www.linkedin.com/in/vedant-gupta-764178366/",
     github: "https://github.com/vedantgupta",
     mail: "mailto:vedantg546@gmail.com"
