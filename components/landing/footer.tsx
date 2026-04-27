@@ -111,9 +111,11 @@ export function Footer() {
                   className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all outline-none text-sm"
                 />
               </div>
-              <button className="px-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all">
-                <Mail className="w-4 h-4" />
-              </button>
+              <Link href="https://youtube.com/@xrisu_4.4?si=hcZ9AeyqVog1WYB2">
+                <button className="px-4 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all">
+                  <Mail className="w-4 h-4" />
+                </button>
+              </Link>
             </div>
           </div>
         </div>
