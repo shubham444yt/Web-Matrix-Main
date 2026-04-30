@@ -36,8 +36,10 @@ export function AIDashboard() {
   }, [])
 
   const generateParticles = () => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+    const count = isMobile ? 15 : 30
     const positions = []
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < count; i++) {
       positions.push({
         x: Math.random() * 100,
         y: Math.random() * 100,
@@ -92,18 +94,18 @@ export function AIDashboard() {
     <section ref={sectionRef} className="py-16 md:py-32 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatParticle {
-          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
-          25% { transform: translate(15px, -20px) scale(1.2); opacity: 0.4; }
-          50% { transform: translate(-10px, -35px) scale(0.8); opacity: 0.3; }
-          75% { transform: translate(20px, -15px) scale(1.1); opacity: 0.5; }
+          0%, 100% { transform: translate(0, 0) scale(1) translateZ(0); opacity: 0; }
+          25% { transform: translate(15px, -20px) scale(1.2) translateZ(0); opacity: 0.4; }
+          50% { transform: translate(-10px, -35px) scale(0.8) translateZ(0); opacity: 0.3; }
+          75% { transform: translate(20px, -15px) scale(1.1) translateZ(0); opacity: 0.5; }
         }
         @keyframes squarePulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3); }
-          50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(139, 92, 246, 0.1); }
+          0%, 100% { transform: scale(1) translateZ(0); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3); }
+          50% { transform: scale(1.05) translateZ(0); box-shadow: 0 0 0 8px rgba(139, 92, 246, 0.1); }
         }
         @keyframes glowPulse {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.1); }
+          0%, 100% { opacity: 0.3; transform: scale(1) translateZ(0); }
+          50% { opacity: 0.6; transform: scale(1.1) translateZ(0); }
         }
         @keyframes borderFlow {
           0% { border-color: rgba(139, 92, 246, 0.2); }
@@ -115,30 +117,39 @@ export function AIDashboard() {
           50% { opacity: 0; }
         }
         @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(30px); }
-          to { opacity: 1; transform: translateX(0); }
+          from { opacity: 0; transform: translateX(30px) translateZ(0); }
+          to { opacity: 1; transform: translateX(0) translateZ(0); }
         }
         @keyframes rotateSlow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from { transform: rotate(0deg) translateZ(0); }
+          to { transform: rotate(360deg) translateZ(0); }
         }
         @keyframes wave {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-3px); }
+          0%, 100% { transform: translateY(0) translateZ(0); }
+          50% { transform: translateY(-3px) translateZ(0); }
         }
         .glass-card-strong {
           background: rgba(255, 255, 255, 0.04);
           backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.1);
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         .glass-card {
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           border: 1px solid rgba(255, 255, 255, 0.08);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, border-color 0.3s ease;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         .glow-border-strong {
           position: relative;
+          transform: translateZ(0);
         }
         .glow-border-strong::before {
           content: '';
@@ -149,6 +160,7 @@ export function AIDashboard() {
           opacity: 0;
           transition: opacity 0.3s ease;
           z-index: -1;
+          transform: translateZ(0);
         }
         .typing-cursor {
           display: inline-block;
@@ -161,20 +173,24 @@ export function AIDashboard() {
         }
         .animated-square {
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
           position: relative;
+          will-change: transform;
+          transform: translateZ(0);
         }
         .animated-square:hover {
-          transform: scale(1.15) rotate(2deg);
+          transform: scale(1.15) rotate(2deg) translateZ(0);
         }
         .chat-bubble {
           animation: slideInRight 0.3s ease-out;
+          transform: translateZ(0);
         }
         .wave-animation {
           animation: wave 1s ease-in-out infinite;
         }
         .rotate-animation {
           animation: rotateSlow 20s linear infinite;
+          will-change: transform;
         }
       `}</style>
 
@@ -208,7 +224,10 @@ export function AIDashboard() {
       </div>
 
       <div className="max-w-5xl mx-auto relative">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div 
+          className={`transition-[opacity,transform] duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          style={{ transform: isVisible ? 'translateY(0) translateZ(0)' : 'translateY(40px) translateZ(0)' }}
+        >
           {/* Main Dashboard Card */}
           <div className="glass-card-strong rounded-3xl p-4 sm:p-8 glow-border-strong relative overflow-hidden">
             {/* Animated decorative glow */}

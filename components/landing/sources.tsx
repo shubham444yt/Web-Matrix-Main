@@ -77,32 +77,32 @@ export function Sources() {
     <section ref={sectionRef} className="py-16 md:py-32 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatSource {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(1deg); }
+          0%, 100% { transform: translateY(0px) rotate(0deg) translateZ(0); }
+          50% { transform: translateY(-15px) rotate(1deg) translateZ(0); }
         }
         @keyframes pulseGlow {
-          0%, 100% { opacity: 0.4; transform: scale(1); }
-          50% { opacity: 0.8; transform: scale(1.05); }
+          0%, 100% { opacity: 0.4; transform: scale(1) translateZ(0); }
+          50% { opacity: 0.8; transform: scale(1.05) translateZ(0); }
         }
         @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+          0% { transform: translateX(-100%) translateZ(0); }
+          100% { transform: translateX(100%) translateZ(0); }
         }
         @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from { transform: rotate(0deg) translateZ(0); }
+          to { transform: rotate(360deg) translateZ(0); }
         }
         @keyframes borderPulse {
           0%, 100% { border-color: rgba(139, 92, 246, 0.2); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
           50% { border-color: rgba(139, 92, 246, 0.6); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2); }
         }
         @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(30px); }
-          to { opacity: 1; transform: translateX(0); }
+          from { opacity: 0; transform: translateX(30px) translateZ(0); }
+          to { opacity: 1; transform: translateX(0) translateZ(0); }
         }
         @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translateY(20px) translateZ(0); }
+          to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
         @keyframes progressFill {
           from { width: 0%; }
@@ -111,16 +111,25 @@ export function Sources() {
         .glass-card-strong {
           background: rgba(255, 255, 255, 0.04);
           backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.1);
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         .glass-card {
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           border: 1px solid rgba(255, 255, 255, 0.08);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         .glow-border {
           position: relative;
+          transform: translateZ(0);
         }
         .glow-border::before {
           content: '';
@@ -131,6 +140,7 @@ export function Sources() {
           opacity: 0;
           transition: opacity 0.3s ease;
           z-index: -1;
+          transform: translateZ(0);
         }
         
         .text-gradient {
@@ -140,6 +150,7 @@ export function Sources() {
           background-clip: text;
           color: transparent;
           animation: gradientShift 3s ease infinite;
+          transform: translateZ(0);
         }
         @keyframes gradientShift {
           0%, 100% { background-position: 0% 50%; }
@@ -155,14 +166,19 @@ export function Sources() {
           animation: borderPulse 2s ease-in-out infinite;
         }
         .source-card {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease;
+          transform: translateZ(0);
+          will-change: transform;
         }
         .source-card:hover {
-          transform: translateY(-4px) scale(1.02);
+          transform: translateY(-4px) scale(1.02) translateZ(0);
           background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.1));
         }
         .progress-fill {
           animation: progressFill 1s ease-out forwards;
+        }
+        .floating-source {
+          will-change: transform;
         }
       `}</style>
 
@@ -182,7 +198,10 @@ export function Sources() {
       <div className="max-w-7xl mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content with animated text */}
-          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'} text-center lg:text-left`}>
+          <div 
+            className={`transition-[opacity,transform] duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'} text-center lg:text-left`}
+            style={{ transform: isVisible ? 'translateX(0) translateZ(0)' : 'translateX(-40px) translateZ(0)' }}
+          >
             {/* Animated badge */}
             <div className="inline-flex items-center gap-2 glass-card rounded-full px-4 py-1.5 mb-6 border-animate">
               <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
@@ -244,7 +263,10 @@ export function Sources() {
           </div>
 
           {/* Right - Interactive Visual Dashboard */}
-          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+          <div 
+            className={`transition-[opacity,transform] duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
+            style={{ transform: isVisible ? 'translateX(0) translateZ(0)' : 'translateX(40px) translateZ(0)' }}
+          >
             <div className="relative">
               {/* Animated floating badges */}
               <div className="absolute -top-4 -left-4 z-10 floating-source" style={{ animationDelay: '0.3s' }}>

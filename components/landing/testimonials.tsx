@@ -131,40 +131,47 @@ export function Testimonials() {
     <section ref={sectionRef} className="py-32 px-4 relative overflow-hidden">
       <style jsx>{`
         @keyframes floatParticle {
-          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0; }
-          25% { transform: translate(10px, -20px) scale(1.2); opacity: 0.4; }
-          50% { transform: translate(-15px, -30px) scale(0.8); opacity: 0.3; }
-          75% { transform: translate(20px, -15px) scale(1.1); opacity: 0.5; }
+          0%, 100% { transform: translate(0, 0) scale(1) translateZ(0); opacity: 0; }
+          25% { transform: translate(10px, -20px) scale(1.2) translateZ(0); opacity: 0.4; }
+          50% { transform: translate(-15px, -30px) scale(0.8) translateZ(0); opacity: 0.3; }
+          75% { transform: translate(20px, -15px) scale(1.1) translateZ(0); opacity: 0.5; }
         }
         @keyframes cardGlow {
-          0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); }
-          50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.4); }
+          0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); transform: translateZ(0); }
+          50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.4); transform: translateZ(0); }
         }
         @keyframes starPulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.2); opacity: 0.8; }
+          0%, 100% { transform: scale(1) translateZ(0); opacity: 1; }
+          50% { transform: scale(1.2) translateZ(0); opacity: 0.8; }
         }
         @keyframes slideFromLeft {
-          from { opacity: 0; transform: translateX(-30px); }
-          to { opacity: 1; transform: translateX(0); }
+          from { opacity: 0; transform: translateX(-30px) translateZ(0); }
+          to { opacity: 1; transform: translateX(0) translateZ(0); }
         }
         @keyframes slideFromRight {
-          from { opacity: 0; transform: translateX(30px); }
-          to { opacity: 1; transform: translateX(0); }
+          from { opacity: 0; transform: translateX(30px) translateZ(0); }
+          to { opacity: 1; transform: translateX(0) translateZ(0); }
         }
         @keyframes rotateSlow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from { transform: rotate(0deg) translateZ(0); }
+          to { transform: rotate(360deg) translateZ(0); }
         }
         @keyframes shine {
           0% { background-position: -100% 0; }
           100% { background-position: 200% 0; }
         }
+        @keyframes floatingCard {
+          0%, 100% { transform: translateY(0) translateZ(0); }
+          50% { transform: translateY(-15px) translateZ(0); }
+        }
         .glass-card-strong {
           background: rgba(255, 255, 255, 0.04);
           backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateZ(0);
+          backface-visibility: hidden;
         }
         .glow-border-strong {
           position: relative;
@@ -179,6 +186,7 @@ export function Testimonials() {
           opacity: 0;
           transition: opacity 0.3s ease;
           z-index: -1;
+          transform: translateZ(0);
         }
         .glow-border-strong:hover::before {
           opacity: 1;
@@ -190,6 +198,7 @@ export function Testimonials() {
           background-clip: text;
           color: transparent;
           animation: gradientShift 3s ease infinite;
+          transform: translateZ(0);
         }
         @keyframes gradientShift {
           0%, 100% { background-position: 0% 50%; }
@@ -208,6 +217,12 @@ export function Testimonials() {
           -webkit-background-clip: text;
           color: transparent;
           animation: shine 2s linear infinite;
+        }
+        .desktop-float {
+          animation: floatingCard 6s ease-in-out infinite;
+        }
+        .perspective-container {
+          perspective: 1000px;
         }
       `}</style>
 
@@ -280,16 +295,16 @@ export function Testimonials() {
         {/* Testimonials Display */}
         <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {/* Desktop View - 3D Carousel */}
-          <div className="hidden md:block relative h-[420px]">
+          <div className="hidden md:block relative h-[450px] perspective-container">
             {getVisibleTestimonials().map((testimonial, i) => (
               <div
                 key={`${testimonial.name}-${testimonial.position}`}
                 className={`absolute top-0 left-1/2 w-full max-w-lg transition-all duration-700 ease-out cursor-pointer ${
                   testimonial.position === 0 
-                    ? 'z-30 -translate-x-1/2 scale-100 opacity-100' 
+                    ? 'z-30 -translate-x-1/2 scale-100 opacity-100 desktop-float' 
                     : testimonial.position === -1 
-                      ? 'z-20 -translate-x-[120%] md:-translate-x-[130%] scale-90 opacity-40 hover:opacity-60' 
-                      : 'z-20 translate-x-[20%] md:translate-x-[30%] scale-90 opacity-40 hover:opacity-60'
+                      ? 'z-20 -translate-x-[120%] md:-translate-x-[130%] scale-90 opacity-40 hover:opacity-60 [transform:rotateY(15deg)]' 
+                      : 'z-20 translate-x-[20%] md:translate-x-[30%] scale-90 opacity-40 hover:opacity-60 [transform:rotateY(-15deg)]'
                 }`}
                 onMouseEnter={() => setHoveredCard(testimonial.originalIndex)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -299,8 +314,8 @@ export function Testimonials() {
                   }
                 }}
               >
-                <div className={`glass-card-strong rounded-3xl p-8 md:p-10 ${testimonial.position === 0 ? 'glow-border-strong' : ''} transition-all duration-300 ${
-                  hoveredCard === testimonial.originalIndex ? 'transform scale-[1.02]' : ''
+                <div className={`glass-card-strong rounded-3xl p-8 md:p-10 ${testimonial.position === 0 ? 'glow-border-strong bg-white/[0.06]' : ''} transition-all duration-500 ${
+                  hoveredCard === testimonial.originalIndex ? 'transform scale-[1.02] shadow-2xl shadow-purple-500/20' : ''
                 }`}>
                   {/* Card UI Content */}
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center mb-6 shadow-lg transition-all duration-300 ${
@@ -317,7 +332,7 @@ export function Testimonials() {
                   
                   {testimonial.position === 0 && (
                     <div className="absolute top-6 right-6">
-                      <div className="glass-card rounded-full px-3 py-1.5 flex items-center gap-1">
+                      <div className="glass-card rounded-full px-3 py-1.5 flex items-center gap-1 bg-white/5 border border-white/10">
                         <TrendingUp className="w-3 h-3 text-green-400" />
                         <span className="text-xs text-green-400 font-medium">{testimonial.metric}</span>
                       </div>
@@ -372,7 +387,7 @@ export function Testimonials() {
             ))}
           </div>
 
-          {/* Mobile View - Responsive Grid (No scrolling) */}
+          {/* Mobile View - Responsive Grid (No scrolling) - NO CHANGES HERE */}
           <div className="md:hidden grid grid-cols-1 gap-8 px-2">
             {testimonials.map((testimonial, i) => (
               <div key={i} className="w-full">
@@ -444,7 +459,7 @@ export function Testimonials() {
               }}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === activeIndex 
-                  ? 'w-8 bg-gradient-to-r from-purple-500 to-pink-500' 
+                  ? 'w-8 bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg shadow-purple-500/50' 
                   : 'w-2 bg-white/20 hover:bg-white/40'
               }`}
             />
@@ -454,19 +469,19 @@ export function Testimonials() {
         {/* Trust badges with animations */}
         <div className={`mt-20 text-center transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-gray-500 text-sm mb-6 flex items-center justify-center gap-2">
-            <Award className="w-4 h-4 text-purple-400" />
+            <Award className="w-4 h-4 text-purple-400 animate-bounce" />
             Trusted by innovative companies worldwide
-            <Sparkles className="w-3 h-3 text-yellow-400" />
+            <Sparkles className="w-3 h-3 text-yellow-400 animate-pulse" />
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
             {["RohTech", "GoogleCloud", "Nexcore Alliance"].map((company, i) => (
               <span 
                 key={i} 
-                className="text-gray-400 text-lg font-semibold transition-all duration-300 hover:text-white hover:scale-110 cursor-pointer"
+                className="text-gray-400 text-lg font-semibold transition-all duration-500 hover:text-white hover:scale-110 cursor-pointer"
                 style={{ 
-                  animation: isVisible ? `slideFromLeft 0.4s ease-out ${i * 0.1}s forwards` : 'none',
+                  animation: isVisible ? `slideFromLeft 0.5s ease-out ${i * 0.15}s forwards` : 'none',
                   opacity: 0,
-                  transform: 'translateX(-20px)'
+                  transform: 'translateX(-20px) translateZ(0)'
                 }}
               >
                 {company}
@@ -476,22 +491,22 @@ export function Testimonials() {
         </div>
 
         {/* Live stats bar */}
-        <div className={`mt-12 flex flex-wrap justify-center gap-4 sm:gap-8 text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="glass-card rounded-full px-6 py-2">
+        <div className={`mt-12 flex flex-wrap justify-center gap-4 sm:gap-8 text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="glass-card rounded-full px-6 py-2 hover:bg-white/10 transition-colors cursor-default border border-white/10">
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               <span className="text-xs text-gray-400">100+</span>
               <span className="text-xs text-white">Happy Clients</span>
             </div>
           </div>
-          <div className="glass-card rounded-full px-6 py-2">
+          <div className="glass-card rounded-full px-6 py-2 hover:bg-white/10 transition-colors cursor-default border border-white/10">
             <div className="flex items-center gap-3">
-              <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+              <Star className="w-3 h-3 text-yellow-400 fill-yellow-400 star-animate" />
               <span className="text-xs text-gray-400">4.9</span>
               <span className="text-xs text-white">Average Rating</span>
             </div>
           </div>
-          <div className="glass-card rounded-full px-6 py-2">
+          <div className="glass-card rounded-full px-6 py-2 hover:bg-white/10 transition-colors cursor-default border border-white/10">
             <div className="flex items-center gap-3">
               <User className="w-3 h-3 text-purple-400" />
               <span className="text-xs text-gray-400">98%</span>
