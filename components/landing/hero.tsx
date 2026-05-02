@@ -250,58 +250,61 @@ export function Hero() {
  <br/><br/><br/>
         {/* Hero Visual - 3D Orb with Orbiting Elements */}
         <div className="relative max-w-4xl mx-auto mt-20">
-          {/* Central Beam Effect */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-48">
-            <div className="w-full h-full bg-gradient-to-b from-cyan-400 via-purple-500 to-transparent animate-pulse-glow" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" />
-          </div>
-          
-          {/* Main Glowing Orb */}
-          <div className="relative flex items-center justify-center py-20">
-            {/* Outer ring */}
-            <div className="absolute w-[400px] h-[400px] rounded-full border border-purple-500/20 animate-spin-slow" />
-            <div className="absolute w-[350px] h-[350px] rounded-full border border-pink-500/10" style={{ animation: 'spin-slow 25s linear infinite reverse' }} />
-            
-            {/* Orbiting icons */}
-            <div className="absolute w-[300px] h-[300px]">
-              <OrbitingIcon icon={Code} delay={0} />
-              <OrbitingIcon icon={Palette} delay={3.75} />
-              <OrbitingIcon icon={Cpu} delay={7.5} />
-              <OrbitingIcon icon={Rocket} delay={11.25} />
+          {/* Desktop Only Orb Visuals */}
+          <div className="hidden md:block">
+            {/* Central Beam Effect */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-48">
+              <div className="w-full h-full bg-gradient-to-b from-cyan-400 via-purple-500 to-transparent animate-pulse-glow" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" />
             </div>
             
-            {/* Central orb */}
-            <div className="relative w-48 h-48 animate-float-slow">
-              {/* Glow layers */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-purple-500/30 to-pink-500/30 blur-2xl animate-pulse-glow" />
-              <div className="absolute inset-4 rounded-full bg-gradient-to-br from-cyan-400/40 via-purple-500/40 to-pink-500/40 blur-xl" />
+            {/* Main Glowing Orb */}
+            <div className="relative flex items-center justify-center py-20">
+              {/* Outer ring */}
+              <div className="absolute w-[400px] h-[400px] rounded-full border border-purple-500/20 animate-spin-slow" />
+              <div className="absolute w-[350px] h-[350px] rounded-full border border-pink-500/10" style={{ animation: 'spin-slow 25s linear infinite reverse' }} />
               
-              {/* Main orb */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 animate-gradient" />
-              <div className="absolute inset-2 rounded-full bg-[#050510]" />
-              <div className="absolute inset-6 rounded-full bg-gradient-to-br from-cyan-400/80 via-purple-500/80 to-pink-500/80">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
+              {/* Orbiting icons */}
+              <div className="absolute w-[300px] h-[300px]">
+                <OrbitingIcon icon={Code} delay={0} />
+                <OrbitingIcon icon={Palette} delay={3.75} />
+                <OrbitingIcon icon={Cpu} delay={7.5} />
+                <OrbitingIcon icon={Rocket} delay={11.25} />
               </div>
               
-              {/* Inner glow */}
-              <div className="absolute inset-10 rounded-full bg-gradient-to-br from-cyan-300 to-purple-400 opacity-60 blur-sm" />
-              
-              {/* Ripple effect */}
-              <div className="absolute inset-0 rounded-full border border-cyan-400/50 animate-ripple" />
-              <div className="absolute inset-0 rounded-full border border-purple-400/50 animate-ripple" style={{ animationDelay: '0.5s' }} />
+              {/* Central orb */}
+              <div className="relative w-48 h-48 animate-float-slow">
+                {/* Glow layers */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-purple-500/30 to-pink-500/30 blur-2xl animate-pulse-glow" />
+                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-cyan-400/40 via-purple-500/40 to-pink-500/40 blur-xl" />
+                
+                {/* Main orb */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 animate-gradient" />
+                <div className="absolute inset-2 rounded-full bg-[#050510]" />
+                <div className="absolute inset-6 rounded-full bg-gradient-to-br from-cyan-400/80 via-purple-500/80 to-pink-500/80">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent" />
+                </div>
+                
+                {/* Inner glow */}
+                <div className="absolute inset-10 rounded-full bg-gradient-to-br from-cyan-300 to-purple-400 opacity-60 blur-sm" />
+                
+                {/* Ripple effect */}
+                <div className="absolute inset-0 rounded-full border border-cyan-400/50 animate-ripple" />
+                <div className="absolute inset-0 rounded-full border border-purple-400/50 animate-ripple" style={{ animationDelay: '0.5s' }} />
+              </div>
             </div>
           </div>
 
-          {/* Feature Cards Around Orb */}
-          <div className="absolute inset-0 pointer-events-none">
+          {/* Feature Cards Around Orb (Desktop) / Stacked (Mobile) */}
+          <div className="md:absolute md:inset-0 pointer-events-none flex flex-col gap-4 items-center mt-12 md:mt-0 md:block">
             {/* Left Card */}
             <div 
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/4 pointer-events-auto animate-float"
+              className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 md:-translate-x-1/4 pointer-events-auto md:animate-float w-full max-w-[300px] md:max-w-[200px]"
               style={{ animationDelay: '0s' }}
             >
-              <div className="glass-card glow-border rounded-2xl p-5 max-w-[200px] hover-lift card-shine">
+              <div className="glass-card glow-border rounded-2xl p-5 hover-lift card-shine w-full">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shrink-0">
                     <Globe className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-white font-semibold text-sm">Web Development</span>
@@ -312,11 +315,11 @@ export function Hero() {
             
             {/* Right Card */}
             <div 
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 pointer-events-auto animate-float-delayed"
+              className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:translate-x-1/4 pointer-events-auto md:animate-float-delayed w-full max-w-[300px] md:max-w-[200px]"
             >
-              <div className="glass-card glow-border rounded-2xl p-5 max-w-[200px] hover-lift card-shine">
+              <div className="glass-card glow-border rounded-2xl p-5 hover-lift card-shine w-full">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shrink-0">
                     <Zap className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-white font-semibold text-sm">AI Solutions</span>
@@ -327,11 +330,11 @@ export function Hero() {
             
             {/* Bottom Card */}
             <div 
-              className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 translate-y-1/4 pointer-events-auto animate-float-delayed-2"
+              className="md:absolute md:bottom-[-100px] md:left-1/2 md:-translate-x-1/2 md:translate-y-1/4 pointer-events-auto md:animate-float-delayed-2 w-full max-w-[300px] md:max-w-[220px]"
             >
-              <div className="glass-card glow-border rounded-2xl p-5 max-w-[220px] hover-lift card-shine">
+              <div className="glass-card glow-border rounded-2xl p-5 hover-lift card-shine w-full">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-orange-500 flex items-center justify-center shrink-0">
                     <Sparkles className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-white font-semibold text-sm">UI/UX Design</span>

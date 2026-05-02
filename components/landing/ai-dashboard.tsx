@@ -13,8 +13,16 @@ export function AIDashboard() {
   const [displayMessage, setDisplayMessage] = useState("")
   const [messageIndex, setMessageIndex] = useState(0)
   const [particlePositions, setParticlePositions] = useState<Array<{ x: number; y: number; delay: number }>>([])
+  const [isMobile, setIsMobile] = useState(false)
 
-  const fullMessage = "Web Matrix is a digital solutions company that helps businesses create 1000x more value than they put in. We specialize in web development, ui/ux design, software development, iot projects, and college projects. We are a team of passionate developers who are dedicated to providing our clients with the best possible solutions."
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const fullMessage = "Web Matrix is a modern digital solutions company delivering web development, UI/UX design, softwares, IoT projects, and student-focused tech solutions."
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,6 +58,7 @@ export function AIDashboard() {
   }
 
   const startTypingAnimation = () => {
+    if (window.innerWidth < 768) return;
     setIsTyping(true)
     setMessageIndex(0)
     setDisplayMessage("")
@@ -356,57 +365,59 @@ export function AIDashboard() {
                       <Bot className="w-3 h-3 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-gray-300 text-sm leading-relaxed">
-                        {displayMessage}
-                        {isTyping && <span className="typing-cursor" />}
-                      </p>
-                      {!isTyping && displayMessage && (
+                      {/* Desktop animated view */}
+                      <div className="hidden md:block">
+                        <p className="text-gray-300 text-sm leading-relaxed">
+                          {displayMessage}
+                          {isTyping && <span className="typing-cursor" />}
+                        </p>
+                        {!isTyping && displayMessage && (
+                          <div className="mt-2 flex items-center gap-2 text-xs text-green-400">
+                            <CheckCircle2 className="w-3 h-3" />
+                            <span>Analysis complete • Start from today.</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Mobile static view */}
+                      <div className="md:hidden">
+                        <p className="text-gray-300 text-sm leading-relaxed">
+                          {fullMessage}
+                        </p>
                         <div className="mt-2 flex items-center gap-2 text-xs text-green-400">
                           <CheckCircle2 className="w-3 h-3" />
                           <span>Analysis complete • Start from today.</span>
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Input area with interactions */}
-                <div className="glass-card rounded-xl p-2 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white/5 group focus-within:border-purple-500/50 transition-all duration-300">
+                <div className="glass-card rounded-xl p-2 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white/5 group transition-all duration-300 opacity-80 pointer-events-none">
                   <div className="flex items-center gap-3 flex-1">
-                    <MessageSquare className="w-5 h-5 text-gray-400 group-focus-within:text-purple-400 transition-colors" />
+                    <MessageSquare className="w-5 h-5 text-gray-400 transition-colors" />
                     <input
                       type="text"
                       value={chatMessage}
-                      onChange={(e) => setChatMessage(e.target.value)}
-                      placeholder="Ask me..."
+                      readOnly
+                      placeholder="Get in touch with us..."
                       className="bg-transparent text-white placeholder-gray-400 outline-none flex-1 text-sm"
                     />
                   </div>
                   <div className="flex items-center justify-end gap-2">
-                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110">
+                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
                       <Paperclip className="w-4 h-4 text-gray-400" />
                     </button>
-                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all duration-300 hover:scale-110">
+                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
                       <Mic className="w-4 h-4 text-gray-400" />
                     </button>
-                    <button className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <button className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
                       <Send className="w-4 h-4 text-white" />
                     </button>
                   </div>
                 </div>
 
-                {/* Suggested prompts */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {["Market trends Q1", "Competitor analysis", "Growth strategies"].map((prompt, i) => (
-                    <button
-                      key={i}
-                      className="text-xs px-3 py-1.5 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition-all duration-300"
-                      onClick={() => setChatMessage(prompt)}
-                    >
-                      {prompt}
-                    </button>
-                  ))}
-                </div>
               </div>
             </div>
 

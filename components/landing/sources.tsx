@@ -33,6 +33,8 @@ export function Sources() {
   }, [])
 
   const startProgressAnimation = () => {
+    if (window.innerWidth < 768) return;
+
     setFetchingStatus("fetching")
     let currentProgress = 0
     const interval = setInterval(() => {
@@ -294,7 +296,7 @@ export function Sources() {
                 <div className="glass-card rounded-2xl p-4 mb-6 flex items-center justify-between group cursor-pointer hover:border-purple-500/50 transition-all duration-300">
                   <div className="flex items-center gap-3">
                     <Search className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
-                    <span className="text-white">
+                    <span className="text-white hidden md:inline">
                       {fetchingStatus === "fetching" ? (
                         <span className="flex items-center gap-1">
                           Drafting Project Plan
@@ -306,6 +308,9 @@ export function Sources() {
                         "Describe your project idea..."
                       )}
                     </span>
+                    <span className="text-white md:hidden">
+                      Describe your project idea...
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Upload className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
@@ -315,24 +320,42 @@ export function Sources() {
 
                 {/* Animated Progress Bar */}
                 <div className="mb-6">
-                  <div className="flex justify-between text-xs text-gray-400 mb-1">
-                    <span>Building your project roadmap...</span>
-                    <span className="text-purple-400">{Math.round(progress)}%</span>
-                  </div>
-                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-green-500 via-yellow-500 to-pink-500 rounded-full transition-all duration-200 relative overflow-hidden"
-                      style={{ width: `${progress}%` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+                  {/* Desktop view */}
+                  <div className="hidden md:block">
+                    <div className="flex justify-between text-xs text-gray-400 mb-1">
+                      <span>Building your project roadmap...</span>
+                      <span className="text-purple-400">{Math.round(progress)}%</span>
                     </div>
+                    <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-green-500 via-yellow-500 to-pink-500 rounded-full transition-all duration-200 relative overflow-hidden"
+                        style={{ width: `${progress}%` }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+                      </div>
+                    </div>
+                    {fetchingStatus === "complete" && (
+                      <div className="text-xs text-green-400 mt-1 animate-pulse flex items-center gap-1">
+                        <CheckCircle2 className="w-3 h-3" />
+                        Roadmap Ready! Let's start building.
+                      </div>
+                    )}
                   </div>
-                  {fetchingStatus === "complete" && (
-                    <div className="text-xs text-green-400 mt-1 animate-pulse flex items-center gap-1">
+                  
+                  {/* Mobile static view */}
+                  <div className="md:hidden">
+                    <div className="flex justify-between text-xs text-gray-400 mb-1">
+                      <span>Building your project roadmap...</span>
+                      <span className="text-purple-400">100%</span>
+                    </div>
+                    <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-green-500 via-yellow-500 to-pink-500 rounded-full w-full" />
+                    </div>
+                    <div className="text-xs text-green-400 mt-1 flex items-center gap-1">
                       <CheckCircle2 className="w-3 h-3" />
                       Roadmap Ready! Let's start building.
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 {/* From the web with animated icon */}
