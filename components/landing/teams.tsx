@@ -6,7 +6,7 @@ import { Twitter, Linkedin, Github, Mail, Sparkles, Users, Heart, ArrowRight, Br
 const teamMembers = [
   {
     name: "Shubham Prajapati",
-    role: "Founder & CEO",
+    role: "Founder & Manager",
     bio: "The creative mastermind behind our WebMatrix",
     image: "/images/monu.png",
     gradient: "from-pink-500 to-rose-500",
@@ -19,7 +19,7 @@ const teamMembers = [
   },
   {
     name: "Shubham Thakare",
-    role: "Co-Founder & Software Engineer",
+    role: "CEO & Software Engineer",
     bio: "The tech genius driving powerful and scalable solutions",
     image: "/images/sk.jpeg",
     gradient: "from-cyan-500 to-blue-500",
@@ -32,7 +32,7 @@ const teamMembers = [
   },
   {
     name: "Anand Yadav",
-    role: "Python Developer & UI/UX Designer",
+    role: "Marketing Head & UI/UX Designer",
     bio: "The creative mind blending design with flawless functionality",
     image: "/images/anand.jpeg",
     gradient: "from-orange-500 to-amber-500",
@@ -331,7 +331,7 @@ export function Teams() {
                     <Sparkles className="w-3 h-3 text-yellow-400 animate-pulse" />
                   )}
                 </h3>
-                <p className={`text-transparent bg-gradient-to-r ${member.gradient} bg-clip-text font-medium text-sm mb-3`}>
+                <p className={`text-transparent bg-gradient-to-r ${member.gradient} bg-clip-text font-bold text-sm mb-3 `}>
                   {member.role}
                 </p>
                 <p className="text-gray-400 text-sm mb-4">{member.bio}</p>

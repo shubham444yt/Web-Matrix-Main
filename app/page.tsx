@@ -49,8 +49,10 @@ export default function Home() {
         <Navbar />
         <Hero />
         <LogoCloud />
-        <Features />
-        <Sources />
+        <div className="hidden lg:block">
+          <Features />
+          <Sources />
+        </div>
         {/* <Discover /> */}
         
         <Services/>
