@@ -41,17 +41,70 @@ const projects = [
     liveUrl: "#",
     githubUrl: "#",
   },
+//new 
   {
-    title: "Car Rental Website",
+    title: "3D Animated Cherry Blossom",
     category: "Web Development",
-    description: "Car Rental Website is a website that can helps to rent a car.",
-    image: "/images/car.png",
-    tags: ["Figma", "React", "JavaScript"],
-    gradient: "from-violet-500 to-purple-500",
-    stats: { patients: "10K+", uptime: "99.9%" },
-    liveUrl: "https://car-booking-web.netlify.app/",
+    description: "A Modern 3D Animated Cherry Blossom Website is a website",
+    image: "/images/woodland.png",
+    tags: ["Next.js", "Tailwind", "JavaScript"],
+    gradient: "from-purple-500 to-pink-500",
+    stats: { sales: "50K+", rating: 4.9 },
+    liveUrl: "https://v0-compute-11.vercel.app/",
     githubUrl: "#",
   },
+
+  //new 
+  {
+    title: "Interior Design Website",
+    category: "Web Development",
+    description: "Modular Interior Website is a website that can helps to design modular Furniture.",
+    image: "/images/interior.png",
+    tags: ["Next.js", "Tailwind", "TypeScript"],
+    gradient: "from-orange-500 to-amber-500",
+    stats: { devices: "5K+", savings: "30%" },
+    liveUrl: "https://katachi-pink-seven.vercel.app/",
+    githubUrl: "#",
+  },
+
+  //new
+  {
+    title: "GIGI Juice Business Website",
+    category: "Enterprise Software",
+    description: "GIGI Cold Drink Business Website is a Brand Collaboration",
+    image: "/images/Juice.png",
+    tags: ["Next.js", "Tailwind", "TypeScript"],
+    gradient: "from-green-500 to-emerald-500",
+    stats: { shipments: "500K+", efficiency: "+40%" },
+    liveUrl: "https://v0-gigi-energy-drink-landing-page.vercel.app/",
+    githubUrl: "#",
+  },
+
+  //new 
+  {
+    title: "Smart AI Tools Hub",
+    category: "Enterprise Software",
+    description: "Smart AI Tools Hub is a website that can helps to use AI tools.",
+    image: "/images/cloud.png",
+    tags: ["Next.js", "Tailwind", "JavaScript"],
+    gradient: "from-pink-500 to-rose-500",
+    stats: { downloads: "1M+", active: "100K+" },
+    liveUrl: "https://v0-cloud-computer-design.vercel.app/",
+    githubUrl: "#",
+  },
+
+  {
+    title: "3D Island Game",
+    category: "Game Development",
+    description: "A 3D island game typically refers to an immersive, interactive video game where players explore, survive, build, or solve puzzles within a three-dimensional, island-based environment.",
+    image: "/images/3D-island.png",
+    tags: ["Render", "Render", "Unity"],
+    gradient: "from-green-500 to-yellow-500",
+    stats: { sales: "50K+", rating: 4.9 },
+    liveUrl: "https://3d-island-sandbox-character-creator.vercel.app/",
+    githubUrl: "#",
+  },
+  
    {
     title: "Snooker Table Booking",
     category: "Enterprise Software",
@@ -63,6 +116,33 @@ const projects = [
     liveUrl: "https://snooker-table-web.vercel.app/",
     githubUrl: "#",
   },
+
+  //new
+  {
+    title: "Real Estate Website",
+    category: "Web Development",
+    description: "A real estate website is a digital platform designed to showcase, buy, sell, or rent properties, allowing users to browse listings, explore neighborhoods, and connect with agents. ",
+    image: "/images/mono.png",
+    tags: ["HTML", "Tailwind", "Three.js"],
+    gradient: "from-amber-500 to-yellow-500",
+    stats: { sales: "50K+", rating: 4.9 },
+    liveUrl: "https://v0-mono-six.vercel.app/",
+    githubUrl: "#",
+  },
+
+  //new
+  {
+    title: "Car Rental Website",
+    category: "Web Development",
+    description: "Car Rental Website is a website that can helps to rent a car.",
+    image: "/images/car.png",
+    tags: ["Figma", "React", "JavaScript"],
+    gradient: "from-violet-500 to-purple-500",
+    stats: { patients: "10K+", uptime: "99.9%" },
+    liveUrl: "https://car-booking-web.netlify.app/",
+    githubUrl: "#",
+  },
+  
   {
     title: "Smart AI Tools Hub",
     category: "Mobile App",
